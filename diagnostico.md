@@ -11,3 +11,66 @@
 | ¿Qué dirección tiene cada impresora? | Impresora 1: 192.168.1.20 · Impresora 2: 192.168.1.21 |
 | ¿Qué equipos tienen dirección fija y cuáles la reciben del router? | **Por DHCP:** `portatil-laura` (`.200`), dos equipos Windows `MSEDGEWIN10` (`.197` y `.198`) y `Movil` (`.196`).<br>**Fija:** el equipo con `192.168.1.10` (MAC `0C:F5:86:8F:00:00`, no aparece en los leases), `Impresora-1`, `Impresora-2`, `Kali` y el equipo de MAC `0C:C8:39:96:00:01`|
  
+##Bloque 4. La sala de espera y el exterior
+
+¿Qué dirección recibe el móvil de un cliente?
+- ip dhcp: DORA IP 192.168.1.196/24 GW 192.168.1.1
+- show ip:
+NAME        : Movil[1]
+IP/MASK     : 192.168.1.196/24
+GATEWAY     : 192.168.1.1
+DNS         : 192.168.1.1
+DHCP SERVER : 192.168.1.1
+DHCP LEASE  : 86376, 86400/43200/75600
+MAC         : 00:50:79:66:68:00
+LPORT       : 20080
+RHOST:PORT  : 127.0.0.1:20081
+MTU         : 1500
+
+Desde ese móvil, ¿se llega al servidor? ¿A las impresoras? ¿Al router? ¿A Internet?
+- A 1.1.1.1 si hace ping
+- A 192.168.122.20 si hace ping // Router ether1
+- A 192.168.1.1 si hace ping // Router ether2
+- A 192.168.1.10/24 si hace ping // Servidor
+- A 192.168.1.20 si hace ping // Impresora 1
+- A 192.168.1.21 si hace ping // Impresora 2
+
+¿Qué dirección tiene la asesoría fiscal y dónde está respecto a la oficina?
+IP: 192.168.122.50/24
+Está conectado directamente a la operadora ya que es una asesoría externa
+
+¿Qué se deja pasar desde fuera hacia la oficina?
+ip firewall nat print:
+ 0    chain=srcnat action=masquerade out-interface=ether1
+
+ 1    ;;; FTP-asesoria
+      chain=dstnat action=dst-nat to-addresses=192.168.1.10 protocol=tcp
+      in-interface=ether1 dst-port=21
+
+ 2    ;;; FTP-pasivo-asesoria
+      chain=dstnat action=dst-nat to-addresses=192.168.1.10 protocol=tcp
+      in-interface=ether1 dst-port=40000-40050
+
+ip firewall filter print
+Flags: X - disabled, I - invalid; D - dynamic
+No aparece nada
+
+¿Qué servicios ofrece el propio router?
+
+ip service print
+Flags: X, I - INVALID
+Columns: NAME, PORT, CERTIFICATE, VRF
+#   NAME     PORT  CERTIFICATE  VRF
+0   telnet     23               main
+1   ftp        21
+2   www        80               main
+3   ssh        22               main
+4 X www-ssl   443  none         main
+5   api      8728               main
+6   winbox   8291               main
+7   api-ssl  8729  none         main
+
+
+Desde la asesoría, ¿se llega a la dirección exterior del router?
+IP: 192.168.122.1
+Si hace ping

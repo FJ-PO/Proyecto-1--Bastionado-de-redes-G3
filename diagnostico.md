@@ -93,7 +93,7 @@ No aparece nada
 ip service print
 Flags: X, I - INVALID
 Columns: NAME, PORT, CERTIFICATE, VRF
-#   NAME     PORT  CERTIFICATE  VRF
+$   NAME     PORT  CERTIFICATE  VRF
 0   telnet     23               main
 1   ftp        21
 2   www        80               main

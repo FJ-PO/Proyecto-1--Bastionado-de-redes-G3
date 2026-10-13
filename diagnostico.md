@@ -10,8 +10,41 @@
 | ¿Cómo está configurado el switch? | **VLANs:** solo la VLAN 1 (`default`), activa, con los 16 puertos `Gi0/0`-`Gi3/3` asignados. No hay VLANs adicionales (las 1002-1005 son las reservadas por defecto).<br>**Estado de los puertos:** conectados (`connected`) `Gi0/0`-`Gi0/3`, `Gi1/0`-`Gi1/3` y `Gi2/0`; sin conexión (`notconnect`) `Gi2/1`-`Gi2/3` y `Gi3/0`-`Gi3/3`. Todos en VLAN 1, dúplex `a-full`, velocidad `auto`, tipo RJ45.<br>**Tabla MAC (8 dinámicas, VLAN 1):**<br>`0cf5.868f.0000` → `Gi0/0`<br>`0cf1.a36e.0000` → `Gi0/1`<br>`0cb2.16b9.0000` → `Gi0/2`<br>`0c3b.d4e0.0000` → `Gi0/3`<br>`0cc8.3996.0001` → `Gi1/0`<br>`0050.7966.6802` → `Gi1/1`<br>`0050.7966.6801` → `Gi1/2`<br>`0050.7966.6800` → `Gi1/3` | |
 | ¿Qué dirección tiene cada impresora? | Impresora 1: 192.168.1.20 · Impresora 2: 192.168.1.21 |
 | ¿Qué equipos tienen dirección fija y cuáles la reciben del router? | **Por DHCP:** `portatil-laura` (`.200`), dos equipos Windows `MSEDGEWIN10` (`.197` y `.198`) y `Movil` (`.196`).<br>**Fija:** el equipo con `192.168.1.10` (MAC `0C:F5:86:8F:00:00`, no aparece en los leases), `Impresora-1`, `Impresora-2`, `Kali` y el equipo de MAC `0C:C8:39:96:00:01`|
+
+## Bloque 2. El servidor por dentro
+¿Cómo se llama, qué sistema es y qué dirección tiene?
+Nombre: srv-mareas
+Sistema: Ubuntu 24.04.5 LTS
+Dirección:192.168.1.10/24
+
+¿Qué servicios están escuchando en la red, y en qué puertos?
+- FTP (vsftpd) para transferencia de archivos en el puerto TCP 21
+- SSH (systemd) para acceso remoto seguro en el puerto TCP 22
+- Telnet (inetd) para acceso remoto sin cifrado tradicional en el puerto TCP 23
+- DNS (systemd-resolve) para resolución de nombres de dominio en el puerto TCP 53
+- HTTP (nginx) un servidor web en el puerto TCP 80
+- NetBIOS/SMB (smbd) para compartir archivos en red en el puerto TCP 139
+- SMB (smbd) para compartir archivos e impresoras en el puerto TCP 445
+
+¿Qué servicios están en marcha? 
+Hay muchos pero supongo que los más importantes son estos:
+- nginx.service: Es el servidor web. 
+- mariadb.service: Es la base de datos. 
+- smbd.service (Samba): Es el que permite que el servidor actúe como un almacén de archivos compartido, permitiendo a ordenadores de la oficina (especialmente Windows) entrar a carpetas compartidas en red.
+- vsftpd.service: Es el servidor FTP. Para subir, descargar o actualizar los archivos del servidor a distancia.
+- cron.service: Es el programador de tareas. Se encarga de que se ejecuten automáticamente las copias de seguridad (backups), limpiezas de disco y tareas de mantenimiento del sistema.
+
+¿Qué usuarios existen?
+- Administrador, que es la jefa.
+- informático externo.
+- becario
+- y asesoría fiscal que es externa también.
+
+¿Quién puede administrar el servidor?
+El administrador, el informático y el becario.
+
  
-##Bloque 4. La sala de espera y el exterior
+## Bloque 4. La sala de espera y el exterior
 
 ¿Qué dirección recibe el móvil de un cliente?
 - ip dhcp: DORA IP 192.168.1.196/24 GW 192.168.1.1

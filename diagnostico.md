@@ -48,14 +48,17 @@ El administrador, el informático y el becario.
 ### 1. Al encender el portátil, ¿pide algo antes de llegar al inicio de sesión?
 Al encender el portátil, no se observa ninguna petición de contraseña previa al inicio de sesión. El equipo arranca y llega a la pantalla de inicio de sesión de Linux, donde se solicitan las credenciales de dos usuarios: `osboxes.org` y `Laura Medina - Asesora`.
 
+
 ### 2. ¿Quién lo usa y qué permisos tiene?
 En el portátil aparecen dos usuarios en la pantalla de inicio de sesión: `osboxes.org` y `Laura Medina - Asesora`.
 
 - **Usuario osboxes:** tiene UID 1000 y GID 1000. Pertenece a los grupos `osboxes`, `adm`, `cdrom`, `sudo`, `dip`, `plugdev`, `lpadmin`, `lxd` y `sambashare`. Puede ejecutar comandos como administrador mediante `sudo`, según la comprobación realizada.
 - **Usuario Laura Medina - Asesora (`laura`):** tiene UID 1001 y GID 1001. Pertenece únicamente al grupo `laura`. No tiene autorización para ejecutar comandos mediante `sudo`, según el resultado obtenido. Su directorio personal es `/home/laura` y utiliza la shell `/bin/bash`.
 
+
 ### 3. ¿Qué documentos hay guardados en él?
 No hay documentos guardados en el directorio `Documentos` del usuario con el que se ha ejecutado el comando.
+
 
 ### 4. ¿Cómo están sus discos?
 El equipo dispone de un disco principal llamado `vda`, dividido en varias particiones.
@@ -77,6 +80,7 @@ La puerta de enlace predeterminada es `192.168.1.1` y la red local es `192.168.1
 
 La configuración de red se obtiene mediante DHCP, como indica el resultado del comando `ip route`, donde aparece `proto dhcp`.
 
+
 ### 6. ¿Qué dirección IP tiene el puesto y de dónde la saca?
 **Credenciales predeterminadas:**
 - Usuario: `IEUser`
@@ -86,9 +90,46 @@ La configuración de red se obtiene mediante DHCP, como indica el resultado del 
 - La puerta de enlace predeterminada es `172.26.0.1`.
 - El equipo obtiene la configuración IP automáticamente mediante DHCP, ya que el campo «DHCP habilitado» indica «Sí». El servidor DHCP que aparece es `172.26.0.1`.
 
+
 ### 7. ¿Cómo llega el puesto a los documentos de los clientes?
+El comando `net use` muestra la siguiente información:
+
+| Campo | Resultado |
+|---|---|
+| Unidad de red | `Z:` |
+| Ruta compartida | `\\192.168.1.10\clientes` |
+| Estado | `Unavailable` (no disponible) |
+
+Además, el comando `net view` devuelve el mensaje `There are no entries in the list`, es decir, no muestra equipos compartidos en la lista de red.
+
+El puesto accede a los documentos de los clientes mediante una carpeta compartida de red, asignada a la unidad `Z:`. La ruta de acceso es `\\192.168.1.10\clientes`. Sin embargo, la conexión aparece como `Unavailable` (no disponible), por lo que no se encuentra accesible en ese momento. El comando `net view` tampoco muestra entradas en la lista de equipos compartidos.
+
+
 ### 8. ¿Qué usuarios hay en el puesto?
+El comando `whoami` indica que el usuario con el que se ha iniciado sesión es `msedgewin10\ieuser`.
+
+Por otro lado, el comando `net user` muestra las siguientes seis cuentas locales:
+
+- `Administrator`
+- `DefaultAccount`
+- `Guest`
+- `IEUser`
+- `sshd`
+- `WDAGUtilityAccount`
+
+Por tanto, el equipo tiene seis cuentas locales registradas, aunque la cuenta utilizada en la sesión actual es `IEUser`.
+
+
 ### 9. ¿Está cifrado el disco del puesto?
+Para comprobar si el disco del puesto está cifrado, he abierto el símbolo del sistema como administrador y he ejecutado el comando `manage-bde -status`.
+
+El resultado obtenido ha sido:
+
+```text
+ERROR: There are no disk volumes that can be protected with BitLocker Drive Encryption.
+```
+
+Por tanto, Windows indica que no hay volúmenes de disco que puedan protegerse con BitLocker Drive Encryption. Con esta comprobación no se puede confirmar que el disco esté cifrado mediante BitLocker.
 
 
 

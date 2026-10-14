@@ -60,10 +60,12 @@ No hay documentos guardados en el directorio `Documentos` del usuario con el que
 ### 4. ¿Cómo están sus discos?
 El equipo dispone de un disco principal llamado `vda`, dividido en varias particiones.
 
-- **`/dev/vda1`:** utiliza el sistema de archivos `ext4` y está montada en `/`. Tiene 217 GB de tamaño, con 6,7 GB ocupados y 199 GB disponibles.
-- **`/dev/vda2`:** utiliza el sistema de archivos `ext4` y está montada en `/boot`. Tiene 252 MB, con 84 MB ocupados y 149 MB disponibles.
-- **`/dev/vda4`:** se utiliza como espacio de intercambio (`swap`).
-- **`/dev/vda5`:** utiliza el sistema de archivos `ext4` y está montada en `/home`. Tiene 265 GB, con 64 MB ocupados y 252 GB disponibles.
+| Partición | Sistema de archivos | Punto de montaje | Tamaño | Espacio ocupado | Espacio disponible |
+|---|---|---|---|---|---|
+| `/dev/vda1` | ext4 | `/` | 217 GB | 6,7 GB | 199 GB |
+| `/dev/vda2` | ext4 | `/boot` | 252 MB | 84 MB | 149 MB |
+| `/dev/vda4` | swap | — | — | — | — |
+| `/dev/vda5` | ext4 | `/home` | 265 GB | 64 MB | 252 GB |
 
 Además, aparecen varios dispositivos `loop` con sistema de archivos `squashfs`, relacionados con aplicaciones instaladas mediante Snap. También aparecen sistemas de archivos temporales `tmpfs`, que utilizan memoria.
 

@@ -43,7 +43,54 @@ Hay muchos pero supongo que los más importantes son estos:
 ¿Quién puede administrar el servidor?
 El administrador, el informático y el becario.
 
- 
+## Bloque 3. El portátil y los puestos.
+
+### 1. Al encender el portátil, ¿pide algo antes de llegar al inicio de sesión?
+Al encender el portátil, no se observa ninguna petición de contraseña previa al inicio de sesión. El equipo arranca y llega a la pantalla de inicio de sesión de Linux, donde se solicitan las credenciales de dos usuarios: `osboxes.org` y `Laura Medina - Asesora`.
+
+### 2. ¿Quién lo usa y qué permisos tiene?
+En el portátil aparecen dos usuarios en la pantalla de inicio de sesión: `osboxes.org` y `Laura Medina - Asesora`.
+
+- **Usuario osboxes:** tiene UID 1000 y GID 1000. Pertenece a los grupos `osboxes`, `adm`, `cdrom`, `sudo`, `dip`, `plugdev`, `lpadmin`, `lxd` y `sambashare`. Puede ejecutar comandos como administrador mediante `sudo`, según la comprobación realizada.
+- **Usuario Laura Medina - Asesora (`laura`):** tiene UID 1001 y GID 1001. Pertenece únicamente al grupo `laura`. No tiene autorización para ejecutar comandos mediante `sudo`, según el resultado obtenido. Su directorio personal es `/home/laura` y utiliza la shell `/bin/bash`.
+
+### 3. ¿Qué documentos hay guardados en él?
+No hay documentos guardados en el directorio `Documentos` del usuario con el que se ha ejecutado el comando.
+
+### 4. ¿Cómo están sus discos?
+El equipo dispone de un disco principal llamado `vda`, dividido en varias particiones.
+
+- **`/dev/vda1`:** utiliza el sistema de archivos `ext4` y está montada en `/`. Tiene 217 GB de tamaño, con 6,7 GB ocupados y 199 GB disponibles.
+- **`/dev/vda2`:** utiliza el sistema de archivos `ext4` y está montada en `/boot`. Tiene 252 MB, con 84 MB ocupados y 149 MB disponibles.
+- **`/dev/vda4`:** se utiliza como espacio de intercambio (`swap`).
+- **`/dev/vda5`:** utiliza el sistema de archivos `ext4` y está montada en `/home`. Tiene 265 GB, con 64 MB ocupados y 252 GB disponibles.
+
+Además, aparecen varios dispositivos `loop` con sistema de archivos `squashfs`, relacionados con aplicaciones instaladas mediante Snap. También aparecen sistemas de archivos temporales `tmpfs`, que utilizan memoria.
+
+### 5. ¿Qué dirección IP tiene el portátil y de dónde la saca?
+
+El portátil tiene la dirección IP `192.168.1.200/24` en la interfaz de red `ens3`, que está activa.
+
+La puerta de enlace predeterminada es `192.168.1.1` y la red local es `192.168.1.0/24`.
+
+La configuración de red se obtiene mediante DHCP, como indica el resultado del comando `ip route`, donde aparece `proto dhcp`.
+
+### 6. ¿Qué dirección IP tiene el puesto y de dónde la saca?
+**Credenciales predeterminadas:**
+- Usuario: `IEUser`
+- Contraseña: `Passw0rd!`
+  
+- El equipo `Puesto-1` tiene la dirección IPv4 `172.26.0.129` y la máscara de subred `255.255.252.0`.
+- La puerta de enlace predeterminada es `172.26.0.1`.
+- El equipo obtiene la configuración IP automáticamente mediante DHCP, ya que el campo «DHCP habilitado» indica «Sí». El servidor DHCP que aparece es `172.26.0.1`.
+
+### 7. ¿Cómo llega el puesto a los documentos de los clientes?
+### 8. ¿Qué usuarios hay en el puesto?
+### 9. ¿Está cifrado el disco del puesto?
+
+
+
+
 ## Bloque 4. La sala de espera y el exterior
 
 ¿Qué dirección recibe el móvil de un cliente?

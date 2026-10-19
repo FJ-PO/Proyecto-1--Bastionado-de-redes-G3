@@ -100,14 +100,14 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - A quién afecta: A los empleados de la gestoría que acceden a los documentos y al administrador informático encargado del mantenimiento del servidor.
 - Cómo comprobaremos: Verificamos que, al extraer el disco y conectarlo a otro equipo, los datos no sean legibles sin la clave de recuperación. Comprobamos que el servidor solo arranca con componentes autorizados y que los empleados pueden seguir accediendo a sus documentos y aplicaciones con normalidad.
 
-- ## 3. Las cuatro molestias 
+## 3. Las cuatro molestias 
 
 | Molestia | A quién afecta | Por qué merece la pena |
 |---|---|---|
 | Contraseñas nuevas y más largas en equipos y servidor | Toda la plantilla | Mayor seguridad de los datos de la red interna |
 | Wi-Fi de clientes separada: el personal no usa ese Wi-Fi con sus móviles | Plantilla con móvil propio | Un móvil de empleado en la red de clientes queda fuera de la interna |
 | Impresión solo desde los puestos autorizados | Quien imprima desde un dispositivo no registrado | Impresoras cerradas sin tocar el trabajo normal |
-|| | |
+|
 
 ---
 

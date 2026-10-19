@@ -93,7 +93,7 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - A quién afecta: A nadie, simplemente hay que realizar la documentación.
 - Cómo comprobaremos: Revisaremos que el inventario esté completo, hacemos una simulación controlada de fallos, y vemos si está bien la documentación.
 
-## Medida 7: Cifrado completo del disco y arranque seguro
+### Medida 7: Cifrado completo del disco y arranque seguro
 - Qué problema resuelve y cómo lo sabemos: Si alguien roba el servidor o extrae sus discos, no podría acceder a los documentos de los clientes. Además, no se podría arrancar el equipo desde un USB para modificar el sistema.
 - Qué hacemos: Endurecer la seguridad mediante el cifrado completo del disco y activar Secure Boot para impedir el arranque de componentes no autorizados.
 - Qué cambiamos y en qué equipo: En el servidor, activamos BitLocker para cifrar sus discos y configuramos Secure Boot. Protegemos también la configuración de la BIOS con contraseña y restringimos el arranque desde USB. 

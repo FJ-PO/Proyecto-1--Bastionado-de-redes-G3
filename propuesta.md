@@ -66,3 +66,17 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - Cómo comprobaremos: un móvil de cliente navega pero no ve a otros móviles ni a ningún equipo interno
 
 
+### Medida 3: Cerrar las impresoras
+- Qué problema resuelve y cómo lo sabemos: Reducir posibles posibles envíos de paquetes desde la impresora, acceso no autorizados a la misma.
+- Qué hacemos: endurecer y acotar
+- Qué cambiamos y en qué equipo: impresoras (contraseña de admin, servicios innecesarios apagados), router (solo impresión desde VLAN 10)
+- A quién afecta: al personal, podrán seguir imprimiendo con normalidad, pero solo los equipos autorizados tendrán acceso a ellas y a su configuración
+- Cómo comprobaremos: se imprime desde ambos puestos. El panel de la impresora ya no es accesible desde Wi-Fi ni exige contraseña
+
+### Medida 4: Endurecer el servidor
+- Qué problema resuelve y cómo lo sabemos: accesos no autorizados al servidor
+- Qué hacemos: desactivar los servicios que sobran, revisión de privilegios, reforzar la seguridad de los servicios que se mantienen
+- Qué cambiamos y en qué equipo: en el servidor, desactivamos los servicios innecesarios y configuramos los que se mantienen para mejorar su seguridad
+- A quién afecta: al personal que utiliza el servidor, aunque podrá seguir trabajando con normalidad si los servicios necesarios se mantienen activos.
+- Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos
+

@@ -43,6 +43,38 @@ Hay muchos pero supongo que los más importantes son estos:
 ¿Quién puede administrar el servidor?
 El administrador, el informático y el becario.
 
+¿Quién ha entrado últimamente?
+Nada importante.
+
+¿Qué carpetas se comparten, y con quién?
+La carpeta de clientes (/srv/gestoria/clientes):
+- Los usuarios pueden ver, crear, modificar y borrar archivos dentro de ella.
+- Cualquier persona que esté conectada a la misma red local puede entrar.
+- El servidor no pide usuario ni contraseña para acceder a esta carpeta.
+- Cualquier archivo o documento nuevo que alguien guarde en esa carpeta se le asignará automáticamente al grupo de trabajo interno de Linux llamado asesores.
+
+¿Dónde están los documentos de los clientes y qué permisos tienen?
+drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Antonio Prueba Inventado'
+drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Ferreteria El Populo SL'
+drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Hermanos Bahia CB'
+drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Lucia Ejemplo Ficticio'
+drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Panaderia La Caleta SL'
+drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Talleres Puerto Real SL'
+
+¿Cómo están organizados los discos?
+• Hay 2 discos (vda y vdb), pero solo se usa uno.
+• Disco vda (En uso): Tiene el sistema operativo y la carpeta de los clientes. Le quedan 15.6 GB libres (está al 15% de su capacidad).
+• Disco vdb (Sin usar): Está completamente vacío, sin formato y el servidor no lo está aprovechando para nada.
+
+
+¿Hay tareas programadas? ¿Qué hacen?
+El usuario root no tiene tareas programadas.
+Hay tres archivos de configuración: e2scrub_all, gestoria y sysstat.
+- **gestoria** (Tareas personalizadas de tu servidor)
+• Tarea 1 (Todos los días a las 10:15 PM / 22:15): Ejecuta el script de copias de seguridad de los clientes (/usr/local/bin/copias-clientes.sh). Guarda todo lo que pasa (errores y aciertos) en el archivo de registro /var/log/copias-clientes.log.
+• Tarea 2 (Todos los días a las 2:30 AM): Ejecuta un script para sincronizar el estado (/usr/local/bin/sincroniza-estado.sh). Al igual que el anterior, guarda su actividad en /var/log/sincroniza-estado.log.
+
+
 ## Bloque 3. El portátil y los puestos.
 
 ### 1. Al encender el portátil, ¿pide algo antes de llegar al inicio de sesión?

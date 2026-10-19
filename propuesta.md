@@ -65,7 +65,6 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - A quién afecta: clientes
 - Cómo comprobaremos: un móvil de cliente navega pero no ve a otros móviles ni a ningún equipo interno
 
-
 ### Medida 3: Cerrar las impresoras
 - Qué problema resuelve y cómo lo sabemos: Reducir posibles posibles envíos de paquetes desde la impresora, acceso no autorizados a la misma.
 - Qué hacemos: endurecer y acotar
@@ -80,3 +79,24 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - A quién afecta: al personal que utiliza el servidor, aunque podrá seguir trabajando con normalidad si los servicios necesarios se mantienen activos.
 - Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos
 
+### Medida 5: Sacar Kali y la Asesoría fiscal
+- Qué problema resuelve y cómo lo sabemos: equipos sin función clara dentro de la red de producción.
+- Qué hacemos: sacar Kali a VLAN 50 y reducir accesos del equipo de la asesoría fiscal al mínimo necesario.
+- Qué cambiamos y en qué equipo: switch oficina, switch operadora
+- A quién afecta: quien use el equipo de la asesoría
+- Cómo comprobaremos: la asesoría sigue accediendo a lo que necesita y nada más
+
+### Medida 6: Inventario y plan de contingencia.
+- Qué problema resuelve y cómo lo sabemos: Permite identificar los equipos esenciales de la red y conocer las consecuencias de una posible avería. 
+- Qué hacemos:  Identificar los equipos y servicios, analizar qué pasaría si alguno falla,  establecer prioridades de recuperación, y documentarlo.
+- Qué cambiamos y en qué equipo: En principio no se modifica ningún equipo. 
+- A quién afecta: A nadie, simplemente hay que realizar la documentación.
+- Cómo comprobaremos: Revisaremos que el inventario esté completo, hacemos una simulación controlada de fallos, y vemos si está bien la documentación.
+
+## Medida 7: Cifrado completo del disco y arranque seguro
+- Qué problema resuelve y cómo lo sabemos: Si alguien roba el servidor o extrae sus discos, no podría acceder a los documentos de los clientes. Además, no se podría arrancar el equipo desde un USB para modificar el sistema.
+- Qué hacemos: Endurecer la seguridad mediante el cifrado completo del disco y activar Secure Boot para impedir el arranque de componentes no autorizados.
+- Qué cambiamos y en qué equipo: En el servidor, activamos BitLocker para cifrar sus discos y configuramos Secure Boot. Protegemos también la configuración de la BIOS con contraseña y restringimos el arranque desde USB. 
+- A quién afecta: A los empleados de la gestoría que acceden a los documentos y al administrador informático encargado del mantenimiento del servidor.
+- Cómo comprobaremos: Verificamos que, al extraer el disco y conectarlo a otro equipo, los datos no sean legibles sin la clave de recuperación. Comprobamos que el servidor solo arranca con componentes autorizados y que los empleados pueden seguir accediendo a sus documentos y aplicaciones con normalidad.
+  

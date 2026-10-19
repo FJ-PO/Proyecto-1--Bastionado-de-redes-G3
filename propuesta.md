@@ -6,22 +6,6 @@
 
 Esquema visual
 
-```mermaid
-flowchart TB
-    NET([Internet]) --> OP[Switch operadora]
-    OP --> RO[Router operadora<br/>enrutado + cortafuegos entre VLAN]
-    RO --> SW[Switch oficina<br/>troncal 802.1Q]
-    SW -- VLAN 10 --> P1[Puesto 1]
-    SW -- VLAN 10 --> P2[Puesto 2]
-    SW -- VLAN 10 --> PT[Portátil]
-    SW -- VLAN 20 --> SRV[Servidor]
-    SW -- VLAN 30 --> I1[Impresora 1]
-    SW -- VLAN 30 --> I2[Impresora 2]
-    SW -- VLAN 40 --> AP[AP Wi-Fi clientes]
-    AP -.Wi-Fi.-> MOV[Móvil cliente]
-    SW -- VLAN 50 --> KALI[Kali]
-    OP --> ASE[Asesoría fiscal]
-```
 <img width="844" height="400" alt="WhatsApp Image 2026-10-19 at 17 33 51" src="https://github.com/user-attachments/assets/dc6c305d-2a7d-43ce-9bb1-eb3b3260f75c" />
 
 

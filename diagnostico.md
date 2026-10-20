@@ -89,7 +89,18 @@ En el portátil aparecen dos usuarios en la pantalla de inicio de sesión: `osbo
 
 
 ### 3. ¿Qué documentos hay guardados en él?
-No hay documentos guardados en el directorio `Documentos` del usuario con el que se ha ejecutado el comando.
+No hay documentos guardados en el directorio `Documentos` del usuario osboxes.
+
+Además, hemos accedido a la cuenta de Laura: el resultado confirma que el usuario actual es `laura` y que su directorio personal es `/home/laura`.
+Dentro de la carpeta `/home/laura/Documentos/Clientes` hemos encontrado tres archivos:
+
+- `declaracion-caleta.txt` (185 bytes).
+- `nomina-puerto-real.txt` (139 bytes).
+- `notas-populo.txt` (122 bytes).
+
+Los tres archivos pertenecen al usuario y al grupo `laura`. Sus permisos son `-rw-r--r--`, lo que significa que Laura puede leerlos y modificarlos, mientras que los demás usuarios tienen permiso de lectura sobre los archivos, siempre que también puedan acceder a los directorios correspondientes.
+
+Por tanto, se confirma que Laura tiene tres documentos guardados en su carpeta personal, dentro de `Documentos/Clientes`.
 
 
 ### 4. ¿Cómo están sus discos?

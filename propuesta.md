@@ -19,7 +19,6 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 | 20 Servidor | Servidor | Concentra los datos. Solo lo alcanza quien lo necesita, y solo por los servicios necesarios. |
 | 30 Impresoras | Impresoras 1 y 2 | Equipos con poco mantenimiento y sin autenticación; no deben ver ni ser vistos por el resto. |
 | 40 Clientes | AP Wi-Fi y móviles de clientes | Red no confiable. Solo sale a Internet. |
-| 50 Pruebas | Kali | Herramienta de pruebas. |
 
 ### 1.3 Reparto de direcciones
 
@@ -29,8 +28,7 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 | Servidor | VLAN 20 | 192.168.20.0/27 | .2 – .30 | 192.168.20.1 |
 | Impresoras | VLAN 30 | 192.168.30.0/27 | .2 – .30 | 192.168.30.1 |
 | Wi-Fi clientes | VLAN 40 | 192.168.40.0/24 | .2 – .254 | 192.168.40.1 |
-| Pruebas (Kali) | VLAN 50 | 192.168.50.0/29 | .2 – .6 | 192.168.50.1 |
-| Salida a operadora | interfaz WAN | la que dé el operador | — | la del operador |
+
 
 Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permite conectar hasta 253 dispositivos con direcciones IP utilizables. Para los servidores e impresoras, al ser menos equipos, basta con una subred /27, que dispone de 30 direcciones utilizables. Los servidores y las impresoras tendrán IP fija o DHCP, mientras que los ordenadores y los dispositivos conectados por Wi-Fi recibirán su dirección IP automáticamente mediante DHCP.
 
@@ -40,10 +38,10 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 |---|---|---|
 | Clientes (40) → Internet | Permitir salida a internet | Es lo que busca un cliente en la sala de espera. |
 | Clientes (40) → resto de VLAN | **Bloquear todo** | Un cliente no debe ver servidor, puestos ni impresoras. |
-| Puestos (10) → Servidor (20) | Permitir solo los servicios necesarios | Trabajar con los datos sin abrir todo. |
+| Puestos (10) → Servidor (20) | Permitir solo los servicios necesarios con samba | Trabajar con los datos sin abrir todo. |
 | Puestos (10) → Impresoras (30) | Permitir solo impresión | Imprimir. |
 | Puestos (10) → Internet | Permitir | Servicios externos. |
-| Servidor (20) → Internet | Solo lo imprescindible, actualizaciones y copias | Reduce lo que un servidor comprometido puede hacer. |
+| Servidor (20) → Internet | Solo lo imprescindible, actualizaciones | Reduce lo que un servidor comprometido puede hacer. |
 | Impresoras (30) → cualquiera | **Bloquear** (solo respuestas) | Una impresora nunca inicia conexiones. |
 | Pruebas (50) → producción | Bloquear salvo pruebas autorizadas | Evita que la herramienta sea un riesgo. |
 
@@ -62,10 +60,10 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - Qué problema resuelve y cómo lo sabemos: Acceso desde AP a la red interna, todo está en la misma red.
 - Qué hacemos: Aislar el Ap de la red interna.
 - Qué cambiamos y en qué equipo: AP wifi-clientes (SSID propio), router en VLAN 40
-- A quién afecta: clientes
+- A quién afecta: A nadie
 - Cómo comprobaremos: un móvil de cliente navega pero no ve a otros móviles ni a ningún equipo interno
 
-### Medida 3: Cerrar las impresoras
+### Medida 3: Aislar las impresoras
 - Qué problema resuelve y cómo lo sabemos: Reducir posibles posibles envíos de paquetes desde la impresora, acceso no autorizados a la misma.
 - Qué hacemos: endurecer y acotar
 - Qué cambiamos y en qué equipo: impresoras (contraseña de admin, servicios innecesarios apagados), router (solo impresión desde VLAN 10)
@@ -74,29 +72,29 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 
 ### Medida 4: Endurecer el servidor
 - Qué problema resuelve y cómo lo sabemos: accesos no autorizados al servidor
-- Qué hacemos: desactivar los servicios que sobran, revisión de privilegios, reforzar la seguridad de los servicios que se mantienen
+- Qué hacemos: desactivar los servicios que sobran, revisión de privilegios, reforzar la seguridad de los servicios que se mantienen y configurar samba.
 - Qué cambiamos y en qué equipo: en el servidor, desactivamos los servicios innecesarios y configuramos los que se mantienen para mejorar su seguridad
-- A quién afecta: al personal que utiliza el servidor, aunque podrá seguir trabajando con normalidad si los servicios necesarios se mantienen activos.
+- A quién afecta: A nadie.
 - Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos
 
-### Medida 5: Sacar Kali y la Asesoría fiscal
-- Qué problema resuelve y cómo lo sabemos: equipos sin función clara dentro de la red de producción.
-- Qué hacemos: sacar Kali a VLAN 50 y reducir accesos del equipo de la asesoría fiscal al mínimo necesario.
-- Qué cambiamos y en qué equipo: switch oficina, switch operadora
+### Medida 5:Comunicación Asesoría fiscal
+- Qué problema resuelve y cómo lo sabemos: Abrir un canal exclusivo con permisos revisados para asesoria fiscal.
+- Qué hacemos: Reducir accesos del equipo de la asesoría fiscal al mínimo necesario.
+- Qué cambiamos y en qué equipo: switch oficina, switch operadora, instalamos wireguard para la comunicación punto a punto del servidor al equipo de asesoria fiscal.
 - A quién afecta: quien use el equipo de la asesoría
 - Cómo comprobaremos: la asesoría sigue accediendo a lo que necesita y nada más
 
-### Medida 6: Inventario y plan de contingencia.
+### Medida 6: Renovación Rotativa Inventario y plan de contingencia.
 - Qué problema resuelve y cómo lo sabemos: Permite identificar los equipos esenciales de la red y conocer las consecuencias de una posible avería. 
 - Qué hacemos:  Identificar los equipos y servicios, analizar qué pasaría si alguno falla,  establecer prioridades de recuperación, y documentarlo.
 - Qué cambiamos y en qué equipo: En principio no se modifica ningún equipo. 
 - A quién afecta: A nadie, simplemente hay que realizar la documentación.
-- Cómo comprobaremos: Revisaremos que el inventario esté completo, hacemos una simulación controlada de fallos, y vemos si está bien la documentación.
+- Cómo comprobaremos: Revisaremos que el inventario esté completo cada 3 meses (Rotativa porque cada 3 meses le toca hacerlo a alguien diferente de la plantilla), hacemos una simulación controlada de fallos, y vemos si está bien la documentación.
 
 ### Medida 7: Cifrado completo del disco y arranque seguro
 - Qué problema resuelve y cómo lo sabemos: Si alguien roba el servidor o extrae sus discos, no podría acceder a los documentos de los clientes. Además, no se podría arrancar el equipo desde un USB para modificar el sistema.
 - Qué hacemos: Endurecer la seguridad mediante el cifrado completo del disco y activar Secure Boot para impedir el arranque de componentes no autorizados.
-- Qué cambiamos y en qué equipo: En el servidor, activamos BitLocker para cifrar sus discos y configuramos Secure Boot. Protegemos también la configuración de la BIOS con contraseña y restringimos el arranque desde USB. 
+- Qué cambiamos y en qué equipo: En el servidor, activamos  LUKS para cifrar sus discos y configuramos Secure Boot. Protegemos también la configuración de la BIOS con contraseña y restringimos el arranque desde USB. 
 - A quién afecta: A los empleados de la gestoría que acceden a los documentos y al administrador informático encargado del mantenimiento del servidor.
 - Cómo comprobaremos: Verificamos que, al extraer el disco y conectarlo a otro equipo, los datos no sean legibles sin la clave de recuperación. Comprobamos que el servidor solo arranca con componentes autorizados y que los empleados pueden seguir accediendo a sus documentos y aplicaciones con normalidad.
 

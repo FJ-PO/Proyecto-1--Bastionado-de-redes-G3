@@ -80,7 +80,7 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 ### Medida 5:Comunicación Asesoría fiscal
 - Qué problema resuelve y cómo lo sabemos: Abrir un canal exclusivo con permisos revisados para asesoria fiscal.
 - Qué hacemos: Reducir accesos del equipo de la asesoría fiscal al mínimo necesario.
-- Qué cambiamos y en qué equipo: switch oficina, switch operadora, instalamos wireguard para la comunicación punto a punto del servidor al equipo de asesoria fiscal.
+- Qué cambiamos y en qué equipo: switch oficina, switch operadora, endurecemos FTP para la comunicación punto a punto del servidor al equipo de asesoria fiscal.
 - A quién afecta: quien use el equipo de la asesoría
 - Cómo comprobaremos: la asesoría sigue accediendo a lo que necesita y nada más
 

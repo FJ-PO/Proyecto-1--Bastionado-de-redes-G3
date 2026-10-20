@@ -43,7 +43,7 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 | Puestos (10) → Internet | Permitir | Servicios externos. |
 | Servidor (20) → Internet | Solo lo imprescindible, actualizaciones | Reduce lo que un servidor comprometido puede hacer. |
 | Impresoras (30) → cualquiera | **Bloquear** (solo respuestas) | Una impresora nunca inicia conexiones. |
-| Pruebas (50) → producción | Bloquear salvo pruebas autorizadas | Evita que la herramienta sea un riesgo. |
+
 
 ---
 

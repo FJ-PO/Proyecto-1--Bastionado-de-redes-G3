@@ -71,8 +71,8 @@ drwxrwsr-x 5 root asesores 4096 Oct 11 17:49 'Talleres Puerto Real SL'
 El usuario root no tiene tareas programadas.
 Hay tres archivos de configuración: e2scrub_all, gestoria y sysstat.
 - **gestoria** (Tareas personalizadas de tu servidor)
-• Tarea 1 (Todos los días a las 10:15 PM / 22:15): Ejecuta el script de copias de seguridad de los clientes (/usr/local/bin/copias-clientes.sh). Guarda todo lo que pasa (errores y aciertos) en el archivo de registro /var/log/copias-clientes.log.
-• Tarea 2 (Todos los días a las 2:30 AM): Ejecuta un script para sincronizar el estado (/usr/local/bin/sincroniza-estado.sh). Al igual que el anterior, guarda su actividad en /var/log/sincroniza-estado.log.
+-   Tarea 1 (Todos los días a las 10:15 PM / 22:15): Ejecuta el script de copias de seguridad de los clientes (/usr/local/bin/copias-clientes.sh). Guarda todo lo que pasa (errores y aciertos) en el archivo de registro /var/log/copias-clientes.log.
+-   Tarea 2 (Todos los días a las 2:30 AM): Ejecuta un script para sincronizar el estado (/usr/local/bin/sincroniza-estado.sh). Al igual que el anterior, guarda su actividad en /var/log/sincroniza-estado.log.
 
 
 ## Bloque 3. El portátil y los puestos.

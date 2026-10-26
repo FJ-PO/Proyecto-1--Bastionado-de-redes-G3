@@ -65,7 +65,7 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 
 ### Medida 3: Aislar las impresoras
 - Qué problema resuelve y cómo lo sabemos: Reducir posibles envíos de paquetes desde la impresora, acceso no autorizados a la misma.
-- Qué hacemos: Endurecer y acotar
+- Qué hacemos: Revisar los servicios innecesarios que esten activos en las impresoras y quitarlos, y en el router configurar que solo se permita la impresión desde la VLAN 10.
 - Qué cambiamos y en qué equipo: Impresoras (contraseña de admin, servicios innecesarios apagados), router (solo impresión desde VLAN 10)
 - A quién afecta: No afecta a nadie
 - Cómo comprobaremos: Se imprime desde ambos puestos. El panel de la impresora ya no es accesible desde Wi-Fi ni exige contraseña

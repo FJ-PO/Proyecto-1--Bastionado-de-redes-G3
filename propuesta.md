@@ -77,12 +77,12 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - A quién afecta: A nadie.
 - Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos
 
-### Medida 5:Comunicación Asesoría fiscal
-- Qué problema resuelve y cómo lo sabemos: Abrir un canal exclusivo con permisos revisados para asesoria fiscal.
-- Qué hacemos: Reducir accesos del equipo de la asesoría fiscal al mínimo necesario.
-- Qué cambiamos y en qué equipo: switch oficina, switch operadora, endurecemos FTP para la comunicación punto a punto del servidor al equipo de asesoria fiscal.
-- A quién afecta: quien use el equipo de la asesoría
-- Cómo comprobaremos: la asesoría sigue accediendo a lo que necesita y nada más
+### Medida 5: Comunicación Asesoría fiscal
+- Qué problema resuelve y cómo lo sabemos: La comunicación segura con el servidor de la empresa.
+- Qué hacemos: Dar al equipo de asesoria fiscal una IP de la VLAN 10 y restringir los accesos que necesitan al minimo con samba.
+- Qué cambiamos y en qué equipo: El acceso del equipo de asesoria fiscal dandole una IP de VLAN 10 y en el samba del servidor restringir accesos.
+- A quién afecta: Al equipo de asesoria fiscal. 
+- Cómo comprobaremos: La asesoría sigue accediendo a lo que necesita y nada más.
 
 ### Medida 6: Renovación Rotativa Inventario y plan de contingencia.
 - Qué problema resuelve y cómo lo sabemos: Permite identificar los equipos esenciales de la red y conocer las consecuencias de una posible avería. 

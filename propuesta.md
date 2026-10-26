@@ -98,6 +98,14 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 - A quién afecta: A los empleados de la gestoría que acceden a los documentos y al administrador informático encargado del mantenimiento del servidor.
 - Cómo comprobaremos: Verificamos que, al extraer el disco y conectarlo a otro equipo, los datos no sean legibles sin la clave de recuperación. Comprobamos que el servidor solo arranca con componentes autorizados y que los empleados pueden seguir accediendo a sus documentos y aplicaciones con normalidad.
 
+### Medida 8: Copias de seguridad y recuperación ante averías
+- Qué problema resuelve y cómo lo sabemos: Las copias se guardan actualmente en /var/backups/gestoria, dentro del disco principal. Si falla todo el servidor, podríamos perder tanto los documentos como las copias. El segundo disco (/dev/vdb) está vacío y tiene 4 GB.
+- Qué hacemos: Guardar las copias diarias en el segundo disco (vdb). Si no podemos utilizar almacenamiento externo o remoto, documentamos el riesgo de perder todo en una avería completa y establecemos un procedimiento para recuperar el sistema.
+- Qué cambiamos y en qué equipo: En el servidor srv-mareas, preparamos el segundo disco y modificamos el script /usr/local/bin/copias-clientes.sh para guardar allí las copias. Documentamos los pasos para reinstalar el sistema y recuperar los documentos.
+- A quién afecta: Al administrador informático, responsable de configurar y comprobar las copias, y a los empleados si se produce una interrupción del servicio.
+- Cómo comprobaremos: Verificamos que las copias se realizan diariamente y hacemos una prueba de recuperación de documentos. También documentamos cómo actuar si falla todo el servidor.
+
+
 ## 3. Las cuatro molestias 
 
 | Molestia | A quién afecta | Por qué merece la pena |

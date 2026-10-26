@@ -6,7 +6,7 @@
 
 Esquema visual
 
-<img width="844" height="400" alt="WhatsApp Image 2026-10-19 at 17 33 51" src="https://github.com/user-attachments/assets/dc6c305d-2a7d-43ce-9bb1-eb3b3260f75c" />
+<img width="754" height="400" alt="esquema vlans" src="https://github.com/user-attachments/assets/c031413e-fe77-4e19-bbe6-0ed2ef7c4d18" />
 
 
 ### 1.2 Qué separamos y por qué

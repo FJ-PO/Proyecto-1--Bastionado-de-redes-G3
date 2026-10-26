@@ -78,12 +78,13 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 - A quién afecta: Al becario, que pierde el acceso, y al resto de empleados, que tendrán que identificarse para consultar los documentos.
 - Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos. Comprobamos que Telnet y los servicios innecesarios están cerrados, que el becario no puede acceder, que los usuarios autorizados pueden abrir y guardar documentos y que las copias de seguridad siguen funcionando.
 
-### Medida 5: Comunicación Asesoría fiscal
-- Qué problema resuelve y cómo lo sabemos: La comunicación segura con el servidor de la empresa.
-- Qué hacemos: Mantener la IP que ya tiene el equipo de asesoria fiscal y restringir los accesos que necesitan al minimo con samba.
-- Qué cambiamos y en qué equipo: En samba restringir accesos.
-- A quién afecta: Al equipo de asesoria fiscal. 
-- Cómo comprobaremos: La asesoría sigue accediendo a lo que necesita y nada más.
+### Medida 5: Separar el acceso de la asesoría fiscal y los trabajadores
+- Qué problema resuelve y cómo lo sabemos: La asesoría fiscal es externa y utiliza FTP mediante lftp para acceder al servidor. Los trabajadores internos utilizan Samba para compartir los documentos de los clientes. Es necesario limitar el acceso de cada uno a los archivos que necesita.
+- Qué hacemos: Mantener Samba para los trabajadores internos y FTP para la asesoría fiscal, restringiendo los permisos de cada usuario. También revisaremos la seguridad de FTP, ya que no cifra las comunicaciones por defecto.
+- Qué cambiamos y en qué equipo: En el servidor Ubuntu, configuramos los permisos de Samba para los trabajadores y los permisos de FTP para la asesoría fiscal. En el router, revisamos las reglas que permiten el acceso FTP desde el exterior.
+- A quién afecta: A los trabajadores internos, a la asesoría fiscal externa y al administrador informático.
+- Cómo comprobaremos: Verificamos que los trabajadores pueden acceder a sus carpetas mediante Samba y que la asesoría fiscal puede acceder mediante lftp únicamente a los archivos autorizados.
+
 
 ### Medida 6: Renovación Rotativa Inventario y plan de contingencia.
 - Qué problema resuelve y cómo lo sabemos: Permite identificar los equipos esenciales de la red y conocer las consecuencias de una posible avería. 

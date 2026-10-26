@@ -80,8 +80,8 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 
 ### Medida 5: Separar el acceso de la asesoría fiscal y los trabajadores
 - Qué problema resuelve y cómo lo sabemos: La asesoría fiscal es externa y utiliza FTP mediante lftp para acceder al servidor. Los trabajadores internos utilizan Samba para compartir los documentos de los clientes. Es necesario limitar el acceso de cada uno a los archivos que necesita.
-- Qué hacemos: Mantener Samba para los trabajadores internos y FTP para la asesoría fiscal, restringiendo los permisos de cada usuario. También revisaremos la seguridad de FTP, ya que no cifra las comunicaciones por defecto.
-- Qué cambiamos y en qué equipo: En el servidor Ubuntu, configuramos los permisos de Samba para los trabajadores y los permisos de FTP para la asesoría fiscal. En el router, revisamos las reglas que permiten el acceso FTP desde el exterior.
+- Qué hacemos: Mantener Samba para los trabajadores internos y FTP para la asesoría fiscal, restringiendo los permisos de cada usuario. También revisaremos la seguridad de FTP, añadiendo UFW para solo dar acceso por ftp a la IP de la asesoria y Fail2ban para limitar los intentos de accesos, ya que no cifra las comunicaciones por defecto.
+- Qué cambiamos y en qué equipo: En el servidor Ubuntu, configuramos los permisos de Samba para los trabajadores y los permisos de FTP para la asesoría fiscal.
 - A quién afecta: A los trabajadores internos, a la asesoría fiscal externa y al administrador informático.
 - Cómo comprobaremos: Verificamos que los trabajadores pueden acceder a sus carpetas mediante Samba y que la asesoría fiscal puede acceder mediante lftp únicamente a los archivos autorizados.
 

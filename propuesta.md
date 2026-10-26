@@ -63,12 +63,13 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 - A quién afecta: A nadie
 - Cómo comprobaremos: un móvil de cliente navega pero no ve a otros móviles ni a ningún equipo interno
 
-### Medida 3: Aislar las impresoras
-- Qué problema resuelve y cómo lo sabemos: Reducir posibles envíos de paquetes desde la impresora, acceso no autorizados a la misma.
-- Qué hacemos: Revisar los servicios innecesarios que esten activos en las impresoras y quitarlos, y en el router configurar que solo se permita la impresión desde la VLAN 10.
-- Qué cambiamos y en qué equipo: Impresoras (contraseña de admin, servicios innecesarios apagados), router (solo impresión desde VLAN 10)
-- A quién afecta: No afecta a nadie
-- Cómo comprobaremos: Se imprime desde ambos puestos. El panel de la impresora ya no es accesible desde Wi-Fi ni exige contraseña
+### Medida 3: Aislar y proteger las impresoras
+- Qué problema resuelve y cómo lo sabemos: Las impresoras pueden recibir accesos no autorizados y el móvil de un cliente puede acceder a ellas. Además, tienen servicios innecesarios que pueden suponer un riesgo de seguridad.
+- Qué hacemos: Asignar una IP fija a cada impresora, desactivar los servicios innecesarios, cambiar la contraseña de administración y configurar el router para permitir únicamente la impresión desde la VLAN 10.
+- Qué cambiamos y en qué equipo: Configuramos la impresora 1 con la IP fija 192.168.2.66 y la impresora 2 con 192.168.2.67, ambas con máscara 255.255.255.240 y puerta de enlace 192.168.2.65. En el switch configuramos la VLAN 30 y en el router limitamos el acceso a las impresoras para que solo puedan utilizarlas los puestos autorizados.
+- A quién afecta: A los empleados que utilizan las impresoras y al administrador encargado de configurar la red.
+- Cómo comprobaremos que protege y que la gestoría sigue trabajando: Comprobamos que se puede imprimir desde ambos puestos, que las impresoras mantienen sus IP fijas y que el móvil de un cliente no puede acceder a ellas ni a sus paneles de administración. También verificamos que los servicios innecesarios están desactivados y que el panel de administración está protegido por contraseña.
+
 
 ### Medida 4: Endurecer el servidor
 - Qué problema resuelve y cómo lo sabemos: accesos no autorizados al servidor. El servidor tiene servicios innecesarios abiertos, Telnet sin cifrado y una carpeta de clientes accesible sin contraseña. Además, el becario puede administrar el servidor aunque ya no trabaja en la gestoría.

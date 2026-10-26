@@ -92,9 +92,9 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 - Cómo comprobaremos: Revisaremos que el inventario esté completo cada 3 meses (Rotativa porque cada 3 meses le toca hacerlo a alguien diferente de la plantilla), hacemos una simulación controlada de fallos, y vemos si está bien la documentación.
 
 ### Medida 7: Cifrado completo del disco y arranque seguro
-- Qué problema resuelve y cómo lo sabemos: Si alguien roba el servidor o extrae sus discos, no podría acceder a los documentos de los clientes. Además, no se podría arrancar el equipo desde un USB para modificar el sistema.
+- Qué problema resuelve y cómo lo sabemos: Si alguien roba el servidor, equipos o extrae sus discos, no podría acceder a los documentos de los clientes. Además, no se podría arrancar el equipo desde un USB para modificar el sistema.
 - Qué hacemos: Endurecer la seguridad mediante el cifrado completo del disco y activar Secure Boot para impedir el arranque de componentes no autorizados.
-- Qué cambiamos y en qué equipo: En el servidor, activamos  LUKS para cifrar sus discos y configuramos Secure Boot. Protegemos también la configuración de la BIOS con contraseña y restringimos el arranque desde USB. 
+- Qué cambiamos y en qué equipo: En el servidor y equipos linux, activamos  LUKS para cifrar sus discos y configuramos Secure Boot, lo mismo para los equipos windows pero en vez de LUKS con BitLocker. Protegemos también la configuración de la BIOS con contraseña y restringimos el arranque desde USB. 
 - A quién afecta: A los empleados de la gestoría que acceden a los documentos y al administrador informático encargado del mantenimiento del servidor.
 - Cómo comprobaremos: Verificamos que, al extraer el disco y conectarlo a otro equipo, los datos no sean legibles sin la clave de recuperación. Comprobamos que el servidor solo arranca con componentes autorizados y que los empleados pueden seguir accediendo a sus documentos y aplicaciones con normalidad.
 

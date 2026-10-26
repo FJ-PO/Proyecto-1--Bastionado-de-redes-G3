@@ -79,8 +79,8 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 
 ### Medida 5: Comunicación Asesoría fiscal
 - Qué problema resuelve y cómo lo sabemos: La comunicación segura con el servidor de la empresa.
-- Qué hacemos: Dar al equipo de asesoria fiscal una IP de la VLAN 10 y restringir los accesos que necesitan al minimo con samba.
-- Qué cambiamos y en qué equipo: El acceso del equipo de asesoria fiscal dandole una IP de VLAN 10 y en el samba del servidor restringir accesos.
+- Qué hacemos: Mantener la IP que ya tiene el equipo de asesoria fiscal y restringir los accesos que necesitan al minimo con samba.
+- Qué cambiamos y en qué equipo: En samba restringir accesos.
 - A quién afecta: Al equipo de asesoria fiscal. 
 - Cómo comprobaremos: La asesoría sigue accediendo a lo que necesita y nada más.
 

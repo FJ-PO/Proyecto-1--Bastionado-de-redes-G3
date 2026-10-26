@@ -71,11 +71,11 @@ Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permi
 - Cómo comprobaremos: Se imprime desde ambos puestos. El panel de la impresora ya no es accesible desde Wi-Fi ni exige contraseña
 
 ### Medida 4: Endurecer el servidor
-- Qué problema resuelve y cómo lo sabemos: accesos no autorizados al servidor
-- Qué hacemos: desactivar los servicios que sobran, revisión de privilegios, reforzar la seguridad de los servicios que se mantienen y configurar samba.
-- Qué cambiamos y en qué equipo: en el servidor, desactivamos los servicios innecesarios y configuramos los que se mantienen para mejorar su seguridad
-- A quién afecta: A nadie.
-- Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos
+- Qué problema resuelve y cómo lo sabemos: accesos no autorizados al servidor. El servidor tiene servicios innecesarios abiertos, Telnet sin cifrado y una carpeta de clientes accesible sin contraseña. Además, el becario puede administrar el servidor aunque ya no trabaja en la gestoría.
+- Qué hacemos: desactivar los servicios que sobran (Telnet), revisión de privilegios, reforzar la seguridad de los servicios que se mantienen y configurar samba. Exigir usuario y contraseña para acceder a los documentos y quitar los permisos de administrador al becario o eliminar su usuario.
+- Qué cambiamos y en qué equipo: en el servidor Ubuntu, desactivamos los servicios innecesarios y configuramos los que se mantienen para mejorar su seguridad, protegemos la carpeta /srv/gestoria/clientes mediante Samba y deshabilitamos la cuenta del becario.
+- A quién afecta: Al becario, que pierde el acceso, y al resto de empleados, que tendrán que identificarse para consultar los documentos.
+- Cómo comprobaremos: escaneo de puertos antes/después y prueba de trabajo normal desde los puestos. Comprobamos que Telnet y los servicios innecesarios están cerrados, que el becario no puede acceder, que los usuarios autorizados pueden abrir y guardar documentos y que las copias de seguridad siguen funcionando.
 
 ### Medida 5: Comunicación Asesoría fiscal
 - Qué problema resuelve y cómo lo sabemos: La comunicación segura con el servidor de la empresa.

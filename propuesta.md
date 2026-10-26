@@ -30,7 +30,7 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 | Wi-Fi clientes | VLAN 40 | 192.168.2.128/25 | 192.168.2.129 – 192.168.2.254 | 192.168.2.129 |
 
 
-Justificación: Para los 40 usuarios, una subred /24 es suficiente, ya que permite conectar hasta 253 dispositivos con direcciones IP utilizables. Para los servidores e impresoras, al ser menos equipos, basta con una subred /27, que dispone de 30 direcciones utilizables. Los servidores y las impresoras tendrán IP fija o DHCP, mientras que los ordenadores y los dispositivos conectados por Wi-Fi recibirán su dirección IP automáticamente mediante DHCP.
+**Justificación:** Las subredes se han elegido según la cantidad de dispositivos de cada segmento. La VLAN 10 utiliza una `/26` para los 40 ordenadores y portátiles; la VLAN 20, una `/24` para los servidores y el equipo externo; la VLAN 30, una `/28` para las impresoras; y la VLAN 40, una `/25` para los clientes Wi-Fi. Cada segmento tiene su propia puerta de enlace. El servidor tiene IP fija, y las impresoras podrán tener IP fija o reserva DHCP, mientras que el resto de dispositivos recibirán su dirección automáticamente mediante DHCP.
 
 ### 1.4 Qué se permite y qué se bloquea
 

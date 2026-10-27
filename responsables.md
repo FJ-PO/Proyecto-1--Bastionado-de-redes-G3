@@ -1,11 +1,11 @@
-|Medida|Implanta|Comprueba|Estado|
+|Medida|Implanta|Comprueba|Estado (Pendiente/ Implantada/ Comprobada)|
 |---|---|---|---|
-| Medida 1 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 2 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 3 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 4 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 5 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 6 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 7 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 8 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
-| Medida 9 | Persona que implanta | Persona que comprueba | Pendiente/ Implantada/ Comprobada |
+| Medida 1 | Fran | Judit | Pendiente |
+| Medida 2 | Judit | Fran | Pendiente|
+| Medida 3 | Fran | Paula | Pendiente |
+| Medida 4 | Paula | Ana | Pendiente |
+| Medida 5 | Ana | Judit | Pendiente |
+| Medida 6 | Judit | Paula | Pendiente |
+| Medida 7 | Paula | Ana | Pendiente |
+| Medida 8 | Ana | Fran | Pendiente |
+| Medida 9 | Fran | Paula | Pendiente |

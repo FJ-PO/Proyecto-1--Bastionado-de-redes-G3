@@ -56,7 +56,7 @@ No se compra hardware, así que usamos VLAN en el switch que ya hay y reglas en 
 - A quién afecta: nadie en el trabajo diario, los clientes solo salen a Internet
 - Cómo comprobaremos que protege y que la gestoría sigue trabajando: desde un móvil de la VLAN 40, el servidor y las impresoras no responden. Desde un puesto se abre el programa de gestión, se imprime y se navega.
 
-### Medida 1.2: Aislar el Wi-Fi de clientes
+#### Medida 1.2: Aislar el Wi-Fi de clientes
 - Qué problema resuelve y cómo lo sabemos: Acceso desde AP a la red interna, todo está en la misma red.
 - Qué hacemos: Aislar el Ap de la red interna.
 - Qué cambiamos y en qué equipo: AP wifi-clientes (SSID propio), router en VLAN 40

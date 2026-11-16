@@ -2,9 +2,9 @@
 |---|---|---|---|
 | Medida 1 | Fran | Judit | Pendiente |
 | Medida 2 | Judit | Paula | Pendiente |
-| Medida 3 | Paula | Ana | Pendiente |
-| Medida 4 | Ana | Judit | Pendiente |
-| Medida 5 | Judit | Paula | Pendiente |
-| Medida 6 | Paula | Ana | Pendiente |
-| Medida 7 | Ana | Fran | Pendiente |
-| Medida 8 | Fran | Paula | Pendiente |
+| Medida 3 | Paula | Judit | Pendiente |
+| Medida 4 | Judit | Fran | Pendiente |
+| Medida 5 | Fran | Paula | Pendiente |
+| Medida 6 | Paula | Judit | Pendiente |
+| Medida 7 | Judit | Paula | Pendiente |
+| Medida 8 | Paula | Fran | Pendiente |

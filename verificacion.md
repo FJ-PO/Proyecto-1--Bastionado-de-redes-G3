@@ -55,7 +55,7 @@
   
 - **Antes:**
 
-1. No tenían IPs:
+1. No tenían IPs estáticas ni conectadas a la VLAN:
 
 <img width="1668" height="434" alt="image" src="https://github.com/user-attachments/assets/d7748b49-a5ea-47dd-a857-af2a52c973dc" />
 

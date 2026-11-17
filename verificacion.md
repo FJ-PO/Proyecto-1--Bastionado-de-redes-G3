@@ -24,21 +24,21 @@
 <br>
 
 - **Después:**
-1. Configuración de las vlans en el router:
+1. Configuración de las vlans en el router: <br>
 <img width="493" height="283" alt="image" src="https://github.com/user-attachments/assets/07a8b26e-2f1d-4da1-a127-e0a93f01cc6a" />
 <br><br>
-2. Configuración de las vlans en el switch
+2. Configuración de las vlans en el switch: <br>
 <img width="476" height="190" alt="image" src="https://github.com/user-attachments/assets/65209c66-c4d2-4526-a9b2-338e76b512bd" />
 <br><br>
-3. Ip moviles:
+3. Ip moviles: <br>
 <img width="517" height="253" alt="image" src="https://github.com/user-attachments/assets/01180fae-f310-4aee-aeba-daadd8c7eafc" />
 <br><br>
-4. Ip portatil linux y windows:
+4. Ip portatil linux y windows: <br>
 <img width="688" height="332" alt="image" src="https://github.com/user-attachments/assets/188bef3c-633e-43d8-b29f-b9f28422eecc" />
 <img width="945" height="215" alt="image" src="https://github.com/user-attachments/assets/5370bcf8-a027-4403-a9a2-10388a686d10"/>
 <img width="837" height="255" alt="image" src="https://github.com/user-attachments/assets/be87253c-4678-4458-90a5-cd832d5d6a3b" />
 <br><br>
-5. Ping entre equipos:
+5. Ping entre equipos:<br>
 <img width="941" height="266" alt="image" src="https://github.com/user-attachments/assets/fb6f1fef-dee8-4f82-a10f-bcd07a932226" />
 <img width="688" height="265" alt="image" src="https://github.com/user-attachments/assets/7685dba1-a2b7-42c2-993a-a5e57065e524" />
 <br><br>

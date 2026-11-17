@@ -45,3 +45,30 @@
 - **¿Sigue funcionando tras reiniciar?:** Si <br>
 - **¿La gestoría sigue trabajando? Qué se ha probado:** Si, los dispositivos que deberían estar conectados hacen ping, y los que no deben estar conectados no lo hacen. <br>
 - **Comprobado por:** Judit
+
+
+## Medida 2: Aislar y proteger las impresoras
+
+- **¿Qué se comprueba?:** Que las IP de las impresoras sean estáticas y que los puestos pueden conectarse con ellas.
+  
+- **¿Cómo se ha comprobado?:** En las impresoras poniendo '*show ip*' y verificando que no estén por DHCP y desde los puestos haciendo '*ping*' a las impresoras.
+  
+- **Antes:**
+
+1. No tenían IPs:
+
+<img width="1668" height="434" alt="image" src="https://github.com/user-attachments/assets/d7748b49-a5ea-47dd-a857-af2a52c973dc" />
+
+- **Después:**
+
+1. IPs estáticas:
+
+<img width="1323" height="418" alt="image" src="https://github.com/user-attachments/assets/4cddb5a5-cfba-4bc9-8234-6610627f443d" />
+
+2. Los no tienen acceso a las impresoras:
+
+<img width="341" height="349" alt="image" src="https://github.com/user-attachments/assets/ac6de366-a62a-4fdf-ba66-f66eb73d2850" />
+
+
+
+

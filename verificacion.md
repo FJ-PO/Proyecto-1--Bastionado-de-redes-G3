@@ -42,6 +42,6 @@
 <img width="941" height="266" alt="image" src="https://github.com/user-attachments/assets/fb6f1fef-dee8-4f82-a10f-bcd07a932226" />
 <img width="688" height="265" alt="image" src="https://github.com/user-attachments/assets/7685dba1-a2b7-42c2-993a-a5e57065e524" />
 <br><br>
-- **¿Sigue funcionando tras reiniciar?:** Si
-- **¿La gestoría sigue trabajando? Qué se ha probado:** Si, los dispositivos que deberían estar conectados hacen ping, y los que no deben estar conectados no lo hacen. 
+- **¿Sigue funcionando tras reiniciar?:** Si <br>
+- **¿La gestoría sigue trabajando? Qué se ha probado:** Si, los dispositivos que deberían estar conectados hacen ping, y los que no deben estar conectados no lo hacen. <br>
 - **Comprobado por:** Judit

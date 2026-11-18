@@ -72,7 +72,7 @@ rc="https://github.com/user-attachments/assets/c296d26f-c2b2-4479-979a-08b412ebf
 
 # Comprobación -- Medida 4
 
-## 1. La carpeta `clientes` por Samba exige usuario
+## 1. La carpeta clientes por Samba exige usuario
 
 El recurso clientes usa valid users = @trabajadores: solo entra quien está en ese grupo, no es anónimo. ✔️
 <img width="650" height="718" alt="1" src="https://github.com/user-attachments/assets/4812d4b3-38e3-4ab1-b43f-d463cbaaac65" />

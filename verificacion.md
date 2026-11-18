@@ -69,6 +69,28 @@
 
 <img width="341" height="349" alt="image" src="https://github.com/user-attachments/assets/ac6de366-a62a-4fdf-ba66-f66eb73d2850" />
 
+# Comprobación -- Medida 4
 
+## 1. La carpeta `clientes` por Samba exige usuario
+
+El recurso [clientes] usa valid users = @trabajadores: solo entra quien está en ese grupo, no es anónimo. ✔️
+
+![Config de Samba](capturas/02-samba.png)
+
+## 2. Permisos de la carpeta y acceso anónimo
+
+La carpeta es root:trabajadores con permisos 2770 (solo accede el grupo). Un intento de acceso anónimo se rechaza con NT_STATUS_ACCESS_DENIED. ✔️
+
+![Permisos y acceso anónimo](capturas/03-permisos-anonimo.png)
+
+## 3. Corrección: asesores lee clientes en solo lectura
+
+Se añadió @asesores a valid users con read only = yes y write list = @trabajadores: la cuenta asesores puede leer la carpeta pero no escribir. ✔️
+
+![Corrección asesores solo lectura](capturas/04-correccion.png)
+
+## Conclusión
+
+Medida 4 cumplida: Samba exige autenticación y la carpeta clientes está protegida por permisos. 
 
 

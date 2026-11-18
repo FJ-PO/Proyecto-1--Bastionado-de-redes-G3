@@ -11,7 +11,8 @@
 <img width="479" height="269" alt="Captura de pantalla 2026-11-09 102946" src="https://github.com/user-attachments/assets/f1f0dda2-bb36-46cc-b74c-56f009bb3ce9" />
 <br><br>
 3. Ip Móviles: <br>
-<img width="492" height="285" alt="ip-movil-cliente" src="https://github.com/user-attachments/assets/c296d26f-c2b2-4479-979a-08b412ebfb87" />
+<img width="492" height="285" alt="ip-movil-cliente" s<img width="650" height="718" alt="1" src="https://github.com/user-attachments/assets/487cbb32-e38a-4a33-b9f5-3522234af6be" />
+rc="https://github.com/user-attachments/assets/c296d26f-c2b2-4479-979a-08b412ebfb87" />
 <br><br>
 4. Ip portatil linux y windows: <br> 
 <img width="900" height="497" alt="Captura de pantalla 2026-11-04 142139" src="https://github.com/user-attachments/assets/04e2ddf9-84d0-46e1-b074-50cd91f4f4e7" />
@@ -73,21 +74,22 @@
 
 ## 1. La carpeta `clientes` por Samba exige usuario
 
-El recurso [clientes] usa valid users = @trabajadores: solo entra quien está en ese grupo, no es anónimo. ✔️
-
-![Config de Samba](capturas/02-samba.png)
+El recurso clientes usa valid users = @trabajadores: solo entra quien está en ese grupo, no es anónimo. ✔️
+<img width="650" height="718" alt="1" src="https://github.com/user-attachments/assets/4812d4b3-38e3-4ab1-b43f-d463cbaaac65" />
 
 ## 2. Permisos de la carpeta y acceso anónimo
 
 La carpeta es root:trabajadores con permisos 2770 (solo accede el grupo). Un intento de acceso anónimo se rechaza con NT_STATUS_ACCESS_DENIED. ✔️
 
-![Permisos y acceso anónimo](capturas/03-permisos-anonimo.png)
+<img width="650" height="718" alt="2" src="https://github.com/user-attachments/assets/ea8e6184-cb62-48fe-8ee6-59702acbae5e" />
+
 
 ## 3. Corrección: asesores lee clientes en solo lectura
 
 Se añadió @asesores a valid users con read only = yes y write list = @trabajadores: la cuenta asesores puede leer la carpeta pero no escribir. ✔️
 
-![Corrección asesores solo lectura](capturas/04-correccion.png)
+<img width="650" height="718" alt="3" src="https://github.com/user-attachments/assets/c26f86dc-4e52-4937-83a0-5e0cf1f5bd64" />
+
 
 ## Conclusión
 

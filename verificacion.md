@@ -2,7 +2,7 @@
 
 ## Medida 1: Segmentar la red en VLAN con reglas entre segmentos
 - **Qué se comprueba:** Que estén todas las vlans hechas y configuradas.
-- **Cómo se ha comprobado:** En el router con '*/export*'. En el switch principal con '*show vlans*'. En todos los dispositivos, comprobar que se han asignado bien las ips por DHCP según las vlans con '*ip a*' o con '*show ip*'.
+- **Cómo se ha comprobado:** En el router con '*/export*'. En el switch principal con '*show vlans*'. En todos los dispositivos, comprobar que se han asignado bien las ips por DHCP según las vlans con '*ip a*' o con '*show ip*'. 
 - **Antes:** <br>
 1. Router sin Vlans configuradas: <br>
 <img width="583" height="502" alt="Captura de pantalla 2026-11-09 103129" src="https://github.com/user-attachments/assets/483c6ab8-dc76-423a-aa8e-f3560c1b98bb" />
@@ -11,15 +11,15 @@
 <img width="479" height="269" alt="Captura de pantalla 2026-11-09 102946" src="https://github.com/user-attachments/assets/f1f0dda2-bb36-46cc-b74c-56f009bb3ce9" />
 <br><br>
 3. Ip Móviles: <br>
-<img width="492" height="285" alt="ip-movil-cliente" s<img width="650" height="718" alt="1" src="https://github.com/user-attachments/assets/487cbb32-e38a-4a33-b9f5-3522234af6be" />
-rc="https://github.com/user-attachments/assets/c296d26f-c2b2-4479-979a-08b412ebfb87" />
+<img width="492" height="285" alt="ip-movil-cliente" src="https://github.com/user-attachments/assets/c296d26f-c2b2-4479-979a-08b412ebfb87" />
+
 <br><br>
-4. Ip portatil linux y windows: <br> 
-<img width="900" height="497" alt="Captura de pantalla 2026-11-04 142139" src="https://github.com/user-attachments/assets/04e2ddf9-84d0-46e1-b074-50cd91f4f4e7" />
-<img width="950" height="290" alt="Captura de pantalla 2026-11-04 142224" src="https://github.com/user-attachments/assets/a563277b-0a84-4dc2-90e4-2ac15e50152b" />
+5. Ip portatil linux y windows: <br> 
+<img width="460" height="155" alt="Captura de pantalla 2026-11-04 142224" src="https://github.com/user-attachments/assets/a563277b-0a84-4dc2-90e4-2ac15e50152b" />
+<img width="450" height="155" alt="Captura de pantalla 2026-11-04 142139" src="https://github.com/user-attachments/assets/da885327-04db-4e2d-a693-49d2f4f8aeff" />
 <img width="359" height="244" alt="image" src="https://github.com/user-attachments/assets/39899226-8649-4e1c-b289-f9d1c710c6a4" />
 <br><br>
-5. Ping de las impresoras al servidor, y del servidor a lo móviles <br>
+6. Ping de las impresoras al servidor, y del servidor a lo móviles <br>
 <img width="356" height="143" alt="Captura de pantalla 2026-11-09 103831" src="https://github.com/user-attachments/assets/c78c9e70-e207-4d7d-ac1d-c30ab35fcd4c" />
 <img width="493" height="142" alt="Captura de pantalla 2026-11-09 103715" src="https://github.com/user-attachments/assets/ae0d5d7b-b7d1-48d7-be92-e31304f1d33d" />
 <br>
@@ -35,40 +35,65 @@ rc="https://github.com/user-attachments/assets/c296d26f-c2b2-4479-979a-08b412ebf
 <img width="517" height="253" alt="image" src="https://github.com/user-attachments/assets/01180fae-f310-4aee-aeba-daadd8c7eafc" />
 <br><br>
 4. Ip portatil linux y windows: <br>
-<img width="688" height="332" alt="image" src="https://github.com/user-attachments/assets/188bef3c-633e-43d8-b29f-b9f28422eecc" />
-<img width="945" height="215" alt="image" src="https://github.com/user-attachments/assets/5370bcf8-a027-4403-a9a2-10388a686d10"/>
-<img width="837" height="255" alt="image" src="https://github.com/user-attachments/assets/be87253c-4678-4458-90a5-cd832d5d6a3b" />
+<img width="492" height="127" alt="image" src="https://github.com/user-attachments/assets/5370bcf8-a027-4403-a9a2-10388a686d10"/>
+<img width="418" height="127" alt="image" src="https://github.com/user-attachments/assets/be87253c-4678-4458-90a5-cd832d5d6a3b" />
+<img width="344" height="166" alt="image" src="https://github.com/user-attachments/assets/188bef3c-633e-43d8-b29f-b9f28422eecc" />
 <br><br>
 5. Ping entre equipos:<br>
-<img width="941" height="266" alt="image" src="https://github.com/user-attachments/assets/fb6f1fef-dee8-4f82-a10f-bcd07a932226" />
-<img width="688" height="265" alt="image" src="https://github.com/user-attachments/assets/7685dba1-a2b7-42c2-993a-a5e57065e524" />
+<img width="470" height="133" alt="image" src="https://github.com/user-attachments/assets/fb6f1fef-dee8-4f82-a10f-bcd07a932226" />
+<img width="344" height="133" alt="image" src="https://github.com/user-attachments/assets/7685dba1-a2b7-42c2-993a-a5e57065e524" />
 <br><br>
-- **¿Sigue funcionando tras reiniciar?:** Si <br>
-- **¿La gestoría sigue trabajando? Qué se ha probado:** Si, los dispositivos que deberían estar conectados hacen ping, y los que no deben estar conectados no lo hacen. <br>
-- **Comprobado por:** Judit
+-  **¿Sigue funcionando tras reiniciar?:**  Si <br>
+-  **¿La gestoría sigue trabajando? Qué se ha probado:**  Si, los dispositivos que deberían estar conectados hacen ping, y los que no deben estar conectados no lo hacen. Ejm: los equipos hacen ping entre si, pero no hacen ping a nada más. Al servidor se conectan por samba y a las impresoras solo imprimen, no se conectan a ellas. <br>
+-  **Comprobado por:**  Judit
 
+---
 
 ## Medida 2: Aislar y proteger las impresoras
-
 - **¿Qué se comprueba?:** Que las IP de las impresoras sean estáticas y que los puestos pueden conectarse con ellas.
-  
 - **¿Cómo se ha comprobado?:** En las impresoras poniendo '*show ip*' y verificando que no estén por DHCP y desde los puestos haciendo '*ping*' a las impresoras.
-  
 - **Antes:**
-
 1. No tenían IPs estáticas conectadas a la VLAN:
-
 <img width="1668" height="434" alt="image" src="https://github.com/user-attachments/assets/d7748b49-a5ea-47dd-a857-af2a52c973dc" />
-
-- **Después:**
-
+- **Después:** <br>
 1. IPs estáticas:
-
 <img width="1323" height="418" alt="image" src="https://github.com/user-attachments/assets/4cddb5a5-cfba-4bc9-8234-6610627f443d" />
 
-2. Los no tienen acceso a las impresoras:
-
+2. Los móviles no tienen acceso a las impresoras:
 <img width="341" height="349" alt="image" src="https://github.com/user-attachments/assets/ac6de366-a62a-4fdf-ba66-f66eb73d2850" />
+
+---
+
+## Medida 3: Desactivar servicios innecesarios del servidor y cerrar puertos
+- **Qué se comprueba:** Que los servicios innecesarios ya no estén escuchando, que los puertos correspondientes estén cerrados y que las conexiones necesarias sigan funcionando correctamente.
+- **Cómo se ha comprobado (orden, desde qué equipo):** En el servidor se ha comprobado que telnet,ngix, y mariadb ya no esten activados, y no haya ningún puerto abierto para esos servicios.
+- **Antes:** (No encuentro la captura del antes)
+1. Puertos abiertos:
+FTP (vsftpd) para transferencia de archivos en el puerto TCP 21
+SSH (systemd) para acceso remoto seguro en el puerto TCP 22
+Telnet (inetd) para acceso remoto sin cifrado tradicional en el puerto TCP 23
+DNS (systemd-resolve) para resolución de nombres de dominio en el puerto TCP 53
+HTTP (nginx) un servidor web en el puerto TCP 80
+NetBIOS/SMB (smbd) para compartir archivos en red en el puerto TCP 139
+SMB (smbd) para compartir archivos e impresoras en el puerto TCP 445
+
+2. Servicios en marcha:
+nginx.service: Es el servidor web.
+mariadb.service: Es la base de datos.
+smbd.service (Samba): Es el que permite que el servidor actúe como un almacén de archivos compartido, permitiendo a ordenadores de la oficina (especialmente Windows) entrar a carpetas compartidas en red.
+vsftpd.service: Es el servidor FTP. Para subir, descargar o actualizar los archivos del servidor a distancia.
+cron.service: Es el programador de tareas. Se encarga de que se ejecuten automáticamente las copias de seguridad (backups), limpiezas de disco y tareas de mantenimiento del sistema.
+
+- **Después:** <br>
+<img width="487," height="67" alt="Captura de pantalla 2026-11-17 135428" src="https://github.com/user-attachments/assets/47e915da-dd2f-487c-9921-cb7b8812ea03" /><br>
+<img width="487" height="165" alt="Captura de pantalla 2026-11-17 135551" src="https://github.com/user-attachments/assets/b66fffd8-d03c-47f6-8ed3-3c7966fb066d" /><br>
+<img width="481" height="204" alt="Captura de pantalla 2026-11-17 135718" src="https://github.com/user-attachments/assets/f53599c3-5009-48ae-bcab-34efb8048ca5" /><br>
+<img width="401" height="296" alt="Captura de pantalla 2026-11-17 140843" src="https://github.com/user-attachments/assets/c53e0a19-b761-4185-adef-e18aa7dab3ed" /><br>
+-  **¿Sigue funcionando tras reiniciar?:**  Si <br>
+-  **¿La gestoría sigue trabajando? Qué se ha probado:**  Si, antes de aplicar la medida se comprobó que esos servicios no se usaran, así que esta medida no interfiere en ningún momento con el trabajo de la gestoría. <br>
+-  **Comprobado por:**  Judit
+
+---
 
 # Comprobación -- Medida 4
 
@@ -95,4 +120,24 @@ Se añadió @asesores a valid users con read only = yes y write list = @trabajad
 
 Medida 4 cumplida: Samba exige autenticación y la carpeta clientes está protegida por permisos. 
 
+---
 
+### Medida 5: Separar el acceso de la asesoría fiscal y los trabajadores
+- **Qué se comprueba:**  
+- **Cómo se ha comprobado (orden, desde qué equipo):**  
+- **Antes: [salida o captura antes de aplicar la medida]**  
+- **Después: [salida o captura después de aplicarla]**  
+- **¿Sigue funcionando tras reiniciar?:**  
+- **¿La gestoría sigue trabajando? Qué se ha probado:**  
+- **Comprobado por:**  
+
+---
+
+### Medida 6: Renovación Rotativa Inventario y plan de contingencia.
+- **Qué se comprueba:** Que el inventario esté bien hecho.
+- **Cómo se ha comprobado (orden, desde qué equipo):** Se ha revisado en general los documentos ya creados y los conocimientos ya obtenidos a lo largo de la tarea sobre la empresa, y comprobado que todo lo descrito en dicho documento es coherente, verificable y actualizado.
+- **Antes:** No había ningún tipo de inventario.
+- **Después:** Tenemos el archivo [Inventario rotativo y plan de contingencia.md](./Inventario rotativo y plan de contingencia.md) 
+- **¿Sigue funcionando tras reiniciar?:** Si
+- **¿La gestoría sigue trabajando? Qué se ha probado:** Si
+- **Comprobado por:** Judit

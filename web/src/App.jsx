@@ -20,7 +20,7 @@ export default function App() {
           <div className="meta">
             <span><b>Equipo:</b> {PROYECTO.equipo.join(' · ')}</span>
             <span><b>Sin comprar hardware:</b> VLAN en el switch y reglas en el router</span>
-            <span><b>8 medidas</b> · 7 comprobadas · 1 implantada</span>
+            <span><b>8 medidas</b> · las 8 comprobadas</span>
           </div>
         </div>
       </header>

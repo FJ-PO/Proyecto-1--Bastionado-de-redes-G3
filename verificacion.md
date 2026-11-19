@@ -151,12 +151,15 @@ Carpeta `root:trabajadores` con permisos `2770`, acceso anónimo rechazado.
 ### Medida 7: Cifrado completo del disco y arranque seguro
 - **Qué se comprueba:** Verificamos que los discos están cifrados en las mismas maquinas ya que no se pueden extraer los discos. Se miran el portátil y los dos windows.
 **Windows 1:**
+  
 <img width="535" height="343" alt="image" src="https://github.com/user-attachments/assets/5d1f1f25-ca06-444f-bb5f-44c07e44d3a8" />
 
 **Windows 2:**
+
 <img width="506" height="378" alt="image" src="https://github.com/user-attachments/assets/2b8fccc4-385f-463e-a536-8b7dbb288a71" />
 
 **Portátil con Ubuntu:**
+
 <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/60827dc9-09b3-44d3-a15c-5a7726f1aa14" />
 
 **Comprobado por:** Paula Bernal 

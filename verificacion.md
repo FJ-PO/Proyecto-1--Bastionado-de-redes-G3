@@ -125,16 +125,15 @@ Carpeta `root:trabajadores` con permisos `2770`, acceso anónimo rechazado.
 ---
 
 ### Medida 5: Separar el acceso de la asesoría fiscal y los trabajadores
-- **Qué se comprueba:**  
-- **Cómo se ha comprobado (orden, desde qué equipo):**  
-- **Después: [salida o captura después de aplicarla]**
+- **Qué se comprueba:** Verificamos que los trabajadores pueden acceder a sus carpetas mediante Samba, el fail2ban y todos los servicos autorizados está en funcionamiento.
+- **Cómo se ha comprobado (orden, desde qué equipo):**  Se ha comprobado desde el puesto con Windows 1.
+- **Después:**
 <img width="684" height="820" alt="image" src="https://github.com/user-attachments/assets/11f05e74-f6a7-421e-bf8b-ec63d0d75abb" />
 
 <img width="779" height="374" alt="image" src="https://github.com/user-attachments/assets/3c566f6f-19b6-4ee0-bac6-729ec6723a24" />
 
-- **¿Sigue funcionando tras reiniciar?:**  
-- **¿La gestoría sigue trabajando? Qué se ha probado:**  
-- **Comprobado por:**  
+- **¿Sigue funcionando tras reiniciar?:** Si
+- **Comprobado por:** Paula Bernal
 
 ---
 

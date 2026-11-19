@@ -149,7 +149,7 @@ Carpeta `root:trabajadores` con permisos `2770`, acceso anónimo rechazado.
 
 ---
 
-# Comprobación — Medida 8: Copias de seguridad y recuperación
+# Comprobación -- Medida 8: Copias de seguridad y recuperación
 
 **Qué se comprueba:** Que las copias se guardan en el segundo disco, que se hacen a diario de forma automática, y que los documentos se pueden recuperar desde una copia.
 

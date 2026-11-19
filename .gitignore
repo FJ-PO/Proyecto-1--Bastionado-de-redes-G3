@@ -1,0 +1,9 @@
+# Dependencias y builds (la web se compila en GitHub Actions)
+**/node_modules/
+**/dist/
+**/dist-*/
+**/artifacts/
+*.tsbuildinfo
+.beatdeck-backup/
+*.beatdeck-new
+.DS_Store

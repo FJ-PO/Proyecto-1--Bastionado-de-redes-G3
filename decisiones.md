@@ -26,3 +26,31 @@
 - Qué decidimos y por qué: Elegimos hacer la opción 2 porque es un rollo tener que renombrar todas las medidas otra vez, y reasignar los trabajos entre los integrantes del grupo. Además a diferencia de la medida 2 anterior en esta si podemos cambiar las ips dejándolas estáticas y por lo menos hacer algo, no como en la medida anterior.
 - Consecuencias: Tenemos una medida que se implementa superficialmente.
 
+### Decisión 4: Permitir la edición de la carpeta clientes a los trabajadores de la gestoría y limitar el acceso de los empleados de la asesoría al mínimo permitiendo solo lectura.
+- Fecha: 16/11/2026
+- Contexto: Intentando implementar la medida 4 nos hemos dado cuenta que la carpeta de clientes está en /srv/gestoria/clientas, porque lo que hemos supuesto que los clientes son de la gestoría no de la asesoría, pero en esa carpeta los trabajadores de la gestoria no tenían permisos nada más que para leer, y no de modificación mientras la asesoría si tenía todos los permisos (Sin ser sus clientes).
+- Opciones que valoramos:
+  1. Mantener los permisos a la carpeta tal y como están.
+  2. (Revertir los papeles) Cambiar los permisos de la carpeta para que los empleados de la gestoría tengan acceso total a la carpeta, mientras que la asesoría solo pueda leerlos.
+- Qué decidimos y por qué: Elegimos hacer la opción 2 porque hemos supuesto que los clientes son de la gestoría y hemos visto más lógico que si son sus clientes los que deben poder modificar los archivos son los mismo trabajadores de la gestoría, y la asesoría únicamente pueda leer estos archivos si los necesita.
+- Consecuencias: Los asesores dejarían de poder modificar dichos archivos, cosa que los gestores  si podrían hacer.
+
+### Decisión 5: No cifrar el servidor.
+- Fecha 17/11/2026
+- Contexto: Hemos dejado esta medida para el final y no nos va a dar tiempo de implementarla en su totalidad, ya que implica reinstalar el sistema operativo del servidor, cosa que ya por sí sola tarda bastante, y las configuraciones ya realizadas anteriores se borrarían y tendríamos que empezar de nuevo.
+- Opciones que valoramos:
+1. Cifrar el servidor y hacer todo lo que se borre de nuevo.
+2. Intentar cifrar el ordenador intentando no tener que reinstalar el sistema operativo.
+3. No cifrarlo.
+- Qué decidimos y por qué: Elegimos hacer la opción 3, no cifrarlo. Todavía nos quedaban medidas que implementar en el servidor, varios integrantes del grupo necesitaban libre el servidor para implementar sus medidas, y no teníamos tiempo tampoco para rehacer las medidas que ya estaban hechas. 
+- Consecuencias: Menos seguridad en el servidor, especialmente si alguien se conecta físicamente al mismo.
+
+### Decisión 6: No terminar de implementar Secure Boot en los equipos.
+- Fecha 18/11/2026
+- Contexto: Tras batallar con los equipos windows para instalar SecureBoot parece que no se podía configurar bien, muchos comandos puestos los equipos no los reconocían aunque deberían de hacerlo, y al final nos dimos cuenta de que también nos sería complicado comprobar que funciona.
+- Opciones que valoramos: 
+1. Configurarlo y dejarlo hecho aunque no se pueda comprobar.
+2. No implementar nada de SecureBoot.
+3. Intentar implementarlo, y llegar hasta el paso más próximo a la implementación permitido por los dispositivos.
+- Qué decidimos y por qué: Elegimos hacer la opción 3 ya que entendemos que para la empresa probablemente que esta medida se pudiera implementar completamente le habría beneficiado bastante, así que intentamos implementarla, y llegamos lo más cercano posible a la implementación completa de SecureBoot, aprendiendo a su vez como se debería implementar en caso de que si se hubiera podido hacer.
+- Consecuencias: Menos seguridad en los equipos.

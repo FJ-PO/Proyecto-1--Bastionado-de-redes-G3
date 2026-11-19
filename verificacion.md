@@ -125,8 +125,11 @@ Medida 4 cumplida: Samba exige autenticación y la carpeta clientes está proteg
 ### Medida 5: Separar el acceso de la asesoría fiscal y los trabajadores
 - **Qué se comprueba:**  
 - **Cómo se ha comprobado (orden, desde qué equipo):**  
-- **Antes: [salida o captura antes de aplicar la medida]**  
-- **Después: [salida o captura después de aplicarla]**  
+- **Después: [salida o captura después de aplicarla]**
+<img width="684" height="820" alt="image" src="https://github.com/user-attachments/assets/11f05e74-f6a7-421e-bf8b-ec63d0d75abb" />
+
+<img width="779" height="374" alt="image" src="https://github.com/user-attachments/assets/3c566f6f-19b6-4ee0-bac6-729ec6723a24" />
+
 - **¿Sigue funcionando tras reiniciar?:**  
 - **¿La gestoría sigue trabajando? Qué se ha probado:**  
 - **Comprobado por:**  

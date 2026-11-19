@@ -146,3 +146,41 @@ Carpeta `root:trabajadores` con permisos `2770`, acceso anónimo rechazado.
 - **¿Sigue funcionando tras reiniciar?:** Si
 - **¿La gestoría sigue trabajando? Qué se ha probado:** Si
 - **Comprobado por:** Judit
+
+---
+
+# Comprobación — Medida 8: Copias de seguridad y recuperación
+
+**Qué se comprueba:** Que las copias se guardan en el segundo disco, que se hacen a diario de forma automática, y que los documentos se pueden recuperar desde una copia.
+
+**Cómo se ha comprobado (orden, desde qué equipo):** Desde `srv-mareas` como `administrador`: 1. estado del disco (`cat /proc/partitions`, `sudo fdisk -l /dev/vdb`, `sudo blkid`, `mount`, `cat /etc/fstab`), 2. destino del script (`sudo cat /usr/local/bin/copias-clientes.sh`), 3. programación (`/etc/cron.d/gestoria`), 4. copias existentes y ejecución manual (`sudo ls -lh /mnt/backups/gestoria/`, `sudo /usr/local/bin/copias-clientes.sh`), 5. restaurar `clientes-2026-11-19.tar` en `/tmp/prueba-recup`.
+
+**Antes:** Las copias se guardaban en `/var/backups/gestoria`, en el disco principal; si fallaba el servidor se perdían a la vez los documentos y las copias.
+
+**Después:**
+
+- Segundo disco formateado `ext4` y montado en `/mnt/backups`.
+
+  <img width="647" height="484" alt="1" src="https://github.com/user-attachments/assets/88256c20-d1f6-456a-a478-d8133aa4ed97" />
+
+- Montaje permanente en `/etc/fstab`, el script guarda en `/mnt/backups/gestoria` y se ejecuta a diario a las 22:15.
+
+  <img width="650" height="718" alt="2" src="https://github.com/user-attachments/assets/6b454690-5ef9-4c95-b21a-6493e24cdcc9" />
+
+
+- Copias diarias (del 3 al 19 de noviembre), ejecución manual `OK copia realizada`, retención de 14 días funcionando.
+  
+  <img width="640" height="718" alt="3" src="https://github.com/user-attachments/assets/0263db7f-3f50-4fb9-aa7a-8157c9691422" />
+
+- Recuperación correcta: los documentos de los 6 clientes se restauran íntegros.
+
+<img width="640" height="718" alt="4" src="https://github.com/user-attachments/assets/089ef05f-f033-4600-8c58-49cd60080b03" />
+
+**¿Sigue funcionando tras reiniciar?:** Sí. El disco se monta solo al arrancar porque está en `/etc/fstab`, además el script comprueba que el disco este montado antes de copiar.
+
+**¿La gestoría sigue trabajando? Qué se ha probado:** Sí. Las copias se hacen en segundo plano sin afectar al trabajo, la recuperación se probó en una carpeta temporal sin tocar los datos en uso.
+
+**Comprobado por:** Francisco José Pérez Ortiz
+
+
+  

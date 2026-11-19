@@ -1,0 +1,73 @@
+name: Publicar en GitHub Pages
+
+# Compila la landing (web/) y las diapositivas (diapositivas/) y las publica
+# juntas en GitHub Pages cada vez que se hace push a main con cambios en la web.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'diapositivas/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita despliegues solapados; deja terminar el que esté en curso.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            web/package-lock.json
+            diapositivas/package-lock.json
+
+      - name: Compilar la landing
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+
+      - name: Compilar las diapositivas
+        working-directory: diapositivas
+        run: |
+          npm ci
+          npm run build
+
+      - name: Juntar las diapositivas dentro de la web
+        run: |
+          mkdir -p web/dist/diapositivas
+          cp -r diapositivas/dist/. web/dist/diapositivas/
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir el resultado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

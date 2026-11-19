@@ -7,4 +7,4 @@
 | Medida 5 | Fran | Paula | Implantada |
 | Medida 6 | Paula | Judit | Implantada |
 | Medida 7 | Judit | Paula | Pendiente |
-| Medida 8 | Paula | Fran | Pendiente |
+| Medida 8 | Paula | Fran | Implantada|

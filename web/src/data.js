@@ -102,7 +102,7 @@ export const MEDIDAS = [
   {
     n: 6,
     titulo: 'Inventario rotativo y plan de contingencia',
-    estado: 'Implantada',
+    estado: 'Comprobada',
     responsable: 'Paula · comprueba Judit',
     simple:
       'Una lista de qué equipos hay, qué pasa si falla cada uno y cómo se recupera. Cada tres meses la revisa una persona distinta de la plantilla.',

@@ -26,6 +26,6 @@ Esta tabla es la base de la entrega. La jefa tiene que saber que riesgos acepta.
 
 | Riesgo                                                       | Por que queda abierto                                        | Que haria falta para cerrarlo                                | Lo acepta la jefa     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------- |
-| No hay documento de recuperacion para una averia total del servidor | No da tiempo a imlementar la medida                          | Documentar paso a paso como reinstalar el sistema y restaurar los documentos desde la copia | Pendiente             |
+| No hay documento de recuperacion para una averia total del servidor | No da tiempo a implementar la medida                          | Documentar paso a paso como reinstalar el sistema y restaurar los documentos desde la copia | Pendiente             |
 | La contrasena del recurso va escrita en claro dentro del script de copias | El script se hizo asi en la Medida 8                         | Guardar la contrasena en un fichero de credenciales aparte con permisos 600 | Pendiente             |
 | Las copias solo estan en el mismo servidor, en el segundo disco, no fuera de el | No hay un almacenamiento externFalta escribirlo, es parte de la Medida 8o o remoto disponible | Llevar una copia a un disco externo o a otro equipo distinto del servidor | A decidir por la jefa |

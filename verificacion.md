@@ -97,28 +97,30 @@ cron.service: Es el programador de tareas. Se encarga de que se ejecuten automá
 
 # Comprobación -- Medida 4
 
-## 1. La carpeta clientes por Samba exige usuario
+**Qué se comprueba:** Que la carpeta compartida `clientes` solo es accesible por el grupo `trabajadores`, que no se puede entrar de forma anónima, y que `asesores` puede leer pero no escribir.
 
-El recurso clientes usa valid users = @trabajadores: solo entra quien está en ese grupo, no es anónimo. ✔️
+**Cómo se ha comprobado (orden, desde qué equipo):** Desde `srv-mareas` como `administrador`: 1. `sudo testparm` y `sudo pdbedit -L`, 2. `ls -ld /srv/gestoria/clientes` y los grupos, 3. acceso anónimo con `smbclient //192.168.1.10/clientes -N`, 4. lectura con `sudo -u asesores ls /srv/gestoria/clientes`.
+
+**Antes:** La cuenta `asesores` no podía leer `clientes`.
+
+**Después:**
+
+- Samba exige usuario del grupo `trabajadores`.
+
 <img width="650" height="718" alt="1" src="https://github.com/user-attachments/assets/4812d4b3-38e3-4ab1-b43f-d463cbaaac65" />
 
-## 2. Permisos de la carpeta y acceso anónimo
-
-La carpeta es root:trabajadores con permisos 2770 (solo accede el grupo). Un intento de acceso anónimo se rechaza con NT_STATUS_ACCESS_DENIED. ✔️
-
+Carpeta `root:trabajadores` con permisos `2770`, acceso anónimo rechazado.
 <img width="650" height="718" alt="2" src="https://github.com/user-attachments/assets/ea8e6184-cb62-48fe-8ee6-59702acbae5e" />
 
-
-## 3. Corrección: asesores lee clientes en solo lectura
-
-Se añadió @asesores a valid users con read only = yes y write list = @trabajadores: la cuenta asesores puede leer la carpeta pero no escribir. ✔️
-
+- `asesores` lee en solo lectura.
 <img width="650" height="718" alt="3" src="https://github.com/user-attachments/assets/c26f86dc-4e52-4937-83a0-5e0cf1f5bd64" />
 
 
-## Conclusión
+**¿Sigue funcionando tras reiniciar?:** Sí. La configuración de Samba y los permisos están guardados en disco, así que se mantienen al reiniciar.
 
-Medida 4 cumplida: Samba exige autenticación y la carpeta clientes está protegida por permisos. 
+**¿La gestoría sigue trabajando? Qué se ha probado:** Sí. Los trabajadores siguen accediendo a clientes y asesores puede consultarlo en solo lectura.
+
+**Comprobado por:** Francisco José Pérez Ortiz
 
 ---
 

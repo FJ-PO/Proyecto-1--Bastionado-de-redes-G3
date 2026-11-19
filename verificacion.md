@@ -97,39 +97,43 @@ cron.service: Es el programador de tareas. Se encarga de que se ejecuten automá
 
 # Comprobación -- Medida 4
 
-## 1. La carpeta clientes por Samba exige usuario
+**Qué se comprueba:** Que la carpeta compartida `clientes` solo es accesible por el grupo `trabajadores`, que no se puede entrar de forma anónima, y que `asesores` puede leer pero no escribir.
 
-El recurso clientes usa valid users = @trabajadores: solo entra quien está en ese grupo, no es anónimo. ✔️
+**Cómo se ha comprobado (orden, desde qué equipo):** Desde `srv-mareas` como `administrador`: 1. `sudo testparm` y `sudo pdbedit -L`, 2. `ls -ld /srv/gestoria/clientes` y los grupos, 3. acceso anónimo con `smbclient //192.168.1.10/clientes -N`, 4. lectura con `sudo -u asesores ls /srv/gestoria/clientes`.
+
+**Antes:** La cuenta `asesores` no podía leer `clientes`.
+
+**Después:**
+
+- Samba exige usuario del grupo `trabajadores`.
+
 <img width="650" height="718" alt="1" src="https://github.com/user-attachments/assets/4812d4b3-38e3-4ab1-b43f-d463cbaaac65" />
 
-## 2. Permisos de la carpeta y acceso anónimo
-
-La carpeta es root:trabajadores con permisos 2770 (solo accede el grupo). Un intento de acceso anónimo se rechaza con NT_STATUS_ACCESS_DENIED. ✔️
-
+Carpeta `root:trabajadores` con permisos `2770`, acceso anónimo rechazado.
 <img width="650" height="718" alt="2" src="https://github.com/user-attachments/assets/ea8e6184-cb62-48fe-8ee6-59702acbae5e" />
 
-
-## 3. Corrección: asesores lee clientes en solo lectura
-
-Se añadió @asesores a valid users con read only = yes y write list = @trabajadores: la cuenta asesores puede leer la carpeta pero no escribir. ✔️
-
+- `asesores` lee en solo lectura.
 <img width="650" height="718" alt="3" src="https://github.com/user-attachments/assets/c26f86dc-4e52-4937-83a0-5e0cf1f5bd64" />
 
 
-## Conclusión
+**¿Sigue funcionando tras reiniciar?:** Sí. La configuración de Samba y los permisos están guardados en disco, así que se mantienen al reiniciar.
 
-Medida 4 cumplida: Samba exige autenticación y la carpeta clientes está protegida por permisos. 
+**¿La gestoría sigue trabajando? Qué se ha probado:** Sí. Los trabajadores siguen accediendo a clientes y asesores puede consultarlo en solo lectura.
+
+**Comprobado por:** Francisco José Pérez Ortiz
 
 ---
 
 ### Medida 5: Separar el acceso de la asesoría fiscal y los trabajadores
-- **Qué se comprueba:**  
-- **Cómo se ha comprobado (orden, desde qué equipo):**  
-- **Antes: [salida o captura antes de aplicar la medida]**  
-- **Después: [salida o captura después de aplicarla]**  
-- **¿Sigue funcionando tras reiniciar?:**  
-- **¿La gestoría sigue trabajando? Qué se ha probado:**  
-- **Comprobado por:**  
+- **Qué se comprueba:** Verificamos que los trabajadores pueden acceder a sus carpetas mediante Samba, el fail2ban y todos los servicos autorizados está en funcionamiento.
+- **Cómo se ha comprobado (orden, desde qué equipo):**  Se ha comprobado desde el puesto con Windows 1.
+- **Después:**
+<img width="684" height="820" alt="image" src="https://github.com/user-attachments/assets/11f05e74-f6a7-421e-bf8b-ec63d0d75abb" />
+
+<img width="779" height="374" alt="image" src="https://github.com/user-attachments/assets/3c566f6f-19b6-4ee0-bac6-729ec6723a24" />
+
+- **¿Sigue funcionando tras reiniciar?:** Si
+- **Comprobado por:** Paula Bernal
 
 ---
 
@@ -141,3 +145,58 @@ Medida 4 cumplida: Samba exige autenticación y la carpeta clientes está proteg
 - **¿Sigue funcionando tras reiniciar?:** Si
 - **¿La gestoría sigue trabajando? Qué se ha probado:** Si
 - **Comprobado por:** Judit
+
+---
+
+### Medida 7: Cifrado completo del disco y arranque seguro
+- **Qué se comprueba:** Verificamos que los discos están cifrados en las mismas maquinas ya que no se pueden extraer los discos. Se miran el portátil y los dos windows.
+**Windows 1:**
+  
+<img width="535" height="343" alt="image" src="https://github.com/user-attachments/assets/5d1f1f25-ca06-444f-bb5f-44c07e44d3a8" />
+
+**Windows 2:**
+
+<img width="506" height="378" alt="image" src="https://github.com/user-attachments/assets/2b8fccc4-385f-463e-a536-8b7dbb288a71" />
+
+**Portátil con Ubuntu:**
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/60827dc9-09b3-44d3-a15c-5a7726f1aa14" />
+
+**Comprobado por:** Paula Bernal 
+---
+
+# Comprobación -- Medida 8: Copias de seguridad y recuperación
+
+**Qué se comprueba:** Que las copias se guardan en el segundo disco, que se hacen a diario de forma automática, y que los documentos se pueden recuperar desde una copia.
+
+**Cómo se ha comprobado (orden, desde qué equipo):** Desde `srv-mareas` como `administrador`: 1. estado del disco (`cat /proc/partitions`, `sudo fdisk -l /dev/vdb`, `sudo blkid`, `mount`, `cat /etc/fstab`), 2. destino del script (`sudo cat /usr/local/bin/copias-clientes.sh`), 3. programación (`/etc/cron.d/gestoria`), 4. copias existentes y ejecución manual (`sudo ls -lh /mnt/backups/gestoria/`, `sudo /usr/local/bin/copias-clientes.sh`), 5. restaurar `clientes-2026-11-19.tar` en `/tmp/prueba-recup`.
+
+**Antes:** Las copias se guardaban en `/var/backups/gestoria`, en el disco principal; si fallaba el servidor se perdían a la vez los documentos y las copias.
+
+**Después:**
+
+- Segundo disco formateado `ext4` y montado en `/mnt/backups`.
+
+  <img width="647" height="484" alt="1" src="https://github.com/user-attachments/assets/88256c20-d1f6-456a-a478-d8133aa4ed97" />
+
+- Montaje permanente en `/etc/fstab`, el script guarda en `/mnt/backups/gestoria` y se ejecuta a diario a las 22:15.
+
+  <img width="650" height="718" alt="2" src="https://github.com/user-attachments/assets/6b454690-5ef9-4c95-b21a-6493e24cdcc9" />
+
+
+- Copias diarias (del 3 al 19 de noviembre), ejecución manual `OK copia realizada`, retención de 14 días funcionando.
+  
+  <img width="640" height="718" alt="3" src="https://github.com/user-attachments/assets/0263db7f-3f50-4fb9-aa7a-8157c9691422" />
+
+- Recuperación correcta: los documentos de los 6 clientes se restauran íntegros.
+
+<img width="640" height="718" alt="4" src="https://github.com/user-attachments/assets/089ef05f-f033-4600-8c58-49cd60080b03" />
+
+**¿Sigue funcionando tras reiniciar?:** Sí. El disco se monta solo al arrancar porque está en `/etc/fstab`, además el script comprueba que el disco este montado antes de copiar.
+
+**¿La gestoría sigue trabajando? Qué se ha probado:** Sí. Las copias se hacen en segundo plano sin afectar al trabajo, la recuperación se probó en una carpeta temporal sin tocar los datos en uso.
+
+**Comprobado por:** Francisco José Pérez Ortiz
+
+
+  

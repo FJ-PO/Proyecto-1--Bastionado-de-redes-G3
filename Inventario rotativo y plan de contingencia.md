@@ -4,7 +4,7 @@
  
 | Equipo | Función | IP actual | Datos relevantes |
 |---|---|---|---|
-| Servidor `srv-mareas` | Almacén de documentos de clientes, FTP, Samba, copias | 192.168.1.10 (fija) | Ubuntu 24.04.5; Samba, vsftpd, SSH, nginx, MariaDB, cron; discos vda (en uso) y vdb (vacío) |
+| Servidor `srv-mareas` | Almacén de documentos de clientes, FTP, Samba, copias | 192.168.1.10 (fija) | Ubuntu 24.04.5; Samba, vsftpd, SSH, cron; discos vda (en uso) y vdb (copias de seguridad) |
 | Router | Salida a Internet, DHCP, NAT hacia el FTP | ether1 192.168.122.20 · ether2 192.168.1.1 | Sin reglas de filtrado; sale por 192.168.122.1 |
 | Switch Oficina | Conecta toda la oficina | Sin IP de gestión documentada | 16 puertos (`Gi0/0`-`Gi3/3`), 9 en uso, solo VLAN 1 |
 | AP Wi-Fi clientes | Wi-Fi de la sala de espera | Sin documentar | Pasará a la VLAN 40 (Medida 1) |
